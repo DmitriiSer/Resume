@@ -180,20 +180,28 @@ var Helpers = {
                 // TODO: rearrange table cells
             }
         });
+    },
+    // set/get projectsToShow variable responsible for showing certain amount of projects in the Projects section
+    getProjectsToShow: function() {
+        var projectsToShow = angular.element(document.getElementsByTagName("ol")).scope().projectsToShow;
+        return projectsToShow;
+    },
+    setProjectsToShow: function(projectsToShow) {
+        angular.element(document.getElementsByTagName("ol")).scope().projectsToShow = projectsToShow;
     }
 }
 // Event handlers
 var EventHandlers = {
     // window load event handler
     loadEventHandler: function() {
-        console.log("window.load()");
+        //console.log("window.load()");
         //Intro animations
         Animation.introAnimation();
         EventHandlers.resizeEventHandler();
     },
     // window resize event handler
     resizeEventHandler: function () {
-        console.log("window.resize()");
+        //console.log("window.resize()");
         // responsive table
         Helpers.responsiveTable($("table"));
     },
@@ -283,6 +291,21 @@ var EventHandlers = {
                 progress: function() { Helpers.fitText(bdgInnerDiv); }
             });
         }
+    },
+    // projectsToShow variable responsible for showing certain amount of projects in the Projects section
+    projectsToShow: "",
+    // print dialog showing event handler
+    beforePrint: function() {
+        //alert(this.projectsToShow);
+        this.projectsToShow = Helpers.getProjectsToShow();
+        Helpers.setProjectsToShow(Infinity);
+        EventHandlers.changeViewClickEventHandler();
+    },
+    // finish printing/close the print dialog event handler
+    afterPrint: function() {
+        //alert(this.projectsToShow);
+        Helpers.setProjectsToShow(this.projectsToShow);
+        EventHandlers.changeViewClickEventHandler();
     }
 }
 // Animation
@@ -505,14 +528,29 @@ var Animation = {
 // jQuery ready function
 $(function() {
     // jQuery-UI tooltips activation
+    //var projectsToShow = Infinity;
     $(document).tooltip({ track: true });
     // Attaching events
     $(window).load(EventHandlers.loadEventHandler);             // Window OnLoad event
     $(window).on("resize", EventHandlers.resizeEventHandler);   // Window resize event
     $("html").on("resize", EventHandlers.resizeEventHandler);   // HTML resize event
+    // click changeView button
     $("#changeView").on("click", EventHandlers.changeViewClickEventHandler); // changeView button click event handler
+    // animate badges
     $(".badge").on("mouseenter", EventHandlers.badgeMouseEnter);// Badge mouse enter event
     $(".badge").on("mouseleave", EventHandlers.badgeMouseLeave);// Badge mouse leave event
-    // click changeView button
-    //$("#changeView").click();
+    // attach print event handlers
+    if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia('print');
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) {
+                EventHandlers.beforePrint();
+            }
+            else {
+                EventHandlers.afterPrint();
+            }
+        });
+    }
+    window.onbeforeprint = EventHandlers.beforePrinting;
+    window.onafterprint = EventHandlers.afterPrint;
 });

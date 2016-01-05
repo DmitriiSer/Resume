@@ -88,7 +88,7 @@ small > i { word-wrap: break-word; }
     width: 20px;
     height: 20px;
     border-left: $changeView_border_width solid transparent;
-    border-top: $changeView_border_width solid $c3;
+    border-top: $changeView_border_width solid $c1;
     border-right: $changeView_border_width solid $c4;
     border-bottom: $changeView_border_width solid transparent;
 }
@@ -96,10 +96,8 @@ small > i { word-wrap: break-word; }
     $changeView_border_width: 25px / 2.5;
     width: 25px;
     height: 25px;
-    border-left: $changeView_border_width solid transparent;
-    border-top: $changeView_border_width solid $c3;
-    border-right: $changeView_border_width solid $c4;
-    border-bottom: $changeView_border_width solid transparent;
+    border-top-color: $c4;
+    border-right-color: $c1;
 }
 // sections
 section {
@@ -134,12 +132,9 @@ section {
     }
 }
 #objective {
-    @include background(image-url("Hexagon-3.jpg"));
-    /*linear-gradient(to bottom, 
-    $headerBackgroundColor,
-    $backgroundColor,
-    $c4,$c4,
-    $backgroundColor),*/
+    background-color: $c4;
+    /*linear-gradient(to bottom, $headerBackgroundColor, $backgroundColor, $c4, $c4, $backgroundColor)*/
+    @include background-image(image-url("Hexagon-3.jpg"));
     @include background-size(cover);
     background-repeat: no-repeat;
     color: $badge-color;
@@ -153,10 +148,7 @@ section {
     color: $c3;
 }
 #education {
-    @include background(linear-gradient(to bottom,
-        $headerBackgroundColor,
-        $backgroundColor,
-        $c5));
+    @include background(linear-gradient(to bottom, $headerBackgroundColor, $backgroundColor, $c5));
 }
 .technologie {
     /*height: 24px;
@@ -302,9 +294,4 @@ table {
 @media print {    
     .no-print, .no-print * { display: none !important; }
     .page-break { page-break-after: always; }
-    .page-footer {
-        display: table-footer-group;
-        position: fixed;
-        bottom: 0;
-    }
 }

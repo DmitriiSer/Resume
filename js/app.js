@@ -1,4 +1,15 @@
 var app = angular.module("Resume",[])
+.directive("reachedToBottom", ["$window", function($window){
+    return {
+        link: function(scope, element, attrs) {
+            angular.element($window).bind("scroll", function() {
+                if(element[0].getBoundingClientRect().bottom - this.innerHeight < 0) {
+                    scope.$apply(attrs.reachedToBottom);
+                }
+            });
+        }
+    }
+}])
 .controller("BadgeController", ["$scope", function($scope) {
     $scope.data = [
         {
@@ -45,20 +56,20 @@ var app = angular.module("Resume",[])
         {
             col: [
                 {
-                    name: "Familiar",
+                    name: "Familiar with",
                     colspan: 2,
                     size: 96,
                     shape: "square",
                     badges: [
                         { title: "OOP",                     href: "http://en.wikipedia.org/wiki/Object-oriented_programming", tooltip: "Object Oriented Principles", no_image: true },
+                        { title: "Design Patterns",         href: "https://en.wikipedia.org/wiki/Software_design_pattern", no_image: true },
                         { title: "MySQL",                   href: "https://www.mysql.com" },
                         { title: "SQL Server",              href: "https://en.wikipedia.org/wiki/Microsoft_SQL_Server", image: "images/mssql.png", tooltip: "Microsoft SQL Server" },
-                        { title: "Design Patterns",         href: "https://en.wikipedia.org/wiki/Software_design_pattern", no_image: true },
+                        { title: "Git",                     href: "https://git-scm.com/" },
+                        { title: "GitHub",                  href: "https://github.com/DmitriiSer/" },
                         { title: "Windows",                 href: "http://www.microsoft.com/windows/" },
                         { title: "Mac OS X",                href: "http://www.apple.com/osx/", image: "images/macosx.png" },
-                        { title: "Linux",                   href: "https://en.wikipedia.org/wiki/Linux" },
-                        { title: "Git",                     href: "https://git-scm.com/" },
-                        { title: "GitHub",                  href: "https://github.com/DmitriiSer/" }
+                        { title: "Linux",                   href: "https://en.wikipedia.org/wiki/Linux" }
                     ]
                 }
             ]
@@ -84,6 +95,10 @@ var app = angular.module("Resume",[])
     };
 }])
 .controller("ProjectsController", ["$scope", function($scope) {
+    $scope.projectsToShow = 1;
+    $scope.loadMoreProjects = function(howMany) {
+        $scope.projectsToShow += howMany;
+    };
     $scope.techTitles = ["Languages", "Frameworks & Libraries", "IDEs", "DBs"];
     $scope.data = [
         {
