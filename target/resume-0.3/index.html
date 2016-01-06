@@ -7,10 +7,10 @@
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <!--scripts-->
         <!--<script src="http://localhost:35729/livereload.js"></script>-->
-        <script src="lib/angular/angular.min.js"></script>
-        <script src="js/jquery-1.11.3.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="js/velocity.min.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/jquery-ui/jquery-ui.js"></script>
+        <script src="lib/velocity/velocity.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/scripts.js"></script>
     </head>
@@ -35,9 +35,7 @@
                     <h3>Entry-Level Software Developer</h3>
                     <p>A result-driven Software Developer with a good understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.</p>
                 </div>
-                <div class="border-tb">
-                    <h3>Specialties</h3>
-                </div>
+                <div class="border-tb"><h3>Specialties</h3></div>
                 <table ng-controller="BadgeController">
                     <tr ng-repeat="row in data">
                         <td colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
@@ -55,7 +53,7 @@
                                              style="{{backgroundStyle(badge)}}"
                                              ng-hide="badge.no_image"></div>
                                         <div class="inner">
-                                            <img ng-hide="badge.no_image" ng-src="{{imageSrc(badge)}}"/>
+                                            <img ng-hide="badge.no_image" ng-src="{{$root.imageSrc(badge)}}"/>
                                             <div ng-class="{center: badge.no_image}">{{badge.title}}</div>
                                         </div>
                                     </a>
@@ -131,7 +129,7 @@
                                               ng-repeat="tech in techs">
                                             <img class="technologie-badge"
                                                  title="{{tech.title}}"
-                                                 ng-src="{{imageSrc(tech)}}"
+                                                 ng-src="{{$root.imageSrc(tech)}}"
                                                  ng-hide="{{tech.no_image}}"/>
                                             <span title="{{tech.title}}"
                                                   style="display: inline-block; height: 24px; vertical-align: {{((tech.no_image) ? 'sub' : 'initial')}}">{{tech.title}}</span>
