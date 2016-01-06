@@ -96,6 +96,9 @@ node_modules
 .node_repl_history
 /target1/
 
+# NetBeans Files
+nb-configuration.xml
+
 # Ionic and Cordova
 /hooks/
 /platforms/
@@ -113,7 +116,7 @@ www
 
 # All Bower lib files
 /src/main/webapp/lib/*/*
-/src/main/webapp/lib/*/!dist/
+!/src/main/webapp/lib/*/dist/
 # except
 !/src/main/webapp/lib/*/*.js
 !/src/main/webapp/lib/*/dist/*.js
