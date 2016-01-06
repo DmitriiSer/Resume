@@ -102,9 +102,6 @@ var app = angular.module("Resume", [])
             }])
         .controller("ProjectsController", ["$rootScope", "$scope", function ($rootScope, $scope) {
                 $scope.projectsToShow = Infinity;
-                $scope.$watch("projectsToShow", function (newValue, oldValue) {
-                    console.log("projectsToShow Changed: from(%s) to(%s)", oldValue, newValue);
-                });
                 $scope.loadMoreProjects = function (howMany) {
                     $scope.projectsToShow += howMany;
                 };
