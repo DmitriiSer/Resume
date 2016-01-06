@@ -21,9 +21,11 @@
                 <h1>Dmitrii Serikov</h1>
                 <div class="border-tb" id="info">
                     <ul class="horizontal">
-                        <li>3293 Barrington Dr.<i class="fa fa-certificate"></i></li>
-                        <li><a href="https://www.google.com/maps/place/Medina+OH">Medina, OH 44256<i class="fa fa-certificate"></i></a></li>
-                        <li>(216) 970-907-1<i class="fa fa-certificate"></i></li>
+                        <a href="https://www.google.com/maps/place/Medina+OH">
+                            <li>3293 Barrington Dr.<i class="fa fa-certificate"></i></li>
+                            <li>Medina, OH 44256<i class="fa fa-certificate"></i></li>
+                        </a>
+                        <li><a href="tel:+1-216-970-9071">(216) 970-9071</a><i class="fa fa-certificate"></i></li>
                         <li><a href="mailto:dmitrii.serikov@gmail.com" style="none">dmitrii.serikov@gmail.com</a></li>
                     </ul>
                     <hr>
@@ -111,7 +113,7 @@
                     <ol id="project-list" class="normal"
                         reached-to-bottom="loadMoreProjects(1)"
                         ng-controller="ProjectsController">
-                        <li ng-repeat="project in filtered = (data | filter: query) | limitTo : projectsToShow">
+                        <li ng-repeat="project in filtered = (data| filter: query) | limitTo : projectsToShow">
                             <h5>{{project.title}}</h5>
                             <small>
                                 <i>

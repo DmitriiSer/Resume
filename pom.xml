@@ -4,7 +4,7 @@
     <groupId>resume</groupId>
     <artifactId>resume</artifactId>
     <packaging>war</packaging>
-    <version>0.3</version>
+    <version>0.4</version>
     <name>resume</name>
     <repositories>
         <repository>

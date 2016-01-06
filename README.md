@@ -1,3 +1,3 @@
-The OpenShift `jbossews` cartridge documentation can be found at:
-
-http://openshift.github.io/documentation/oo_cartridge_guide.html#tomcat
+# Resume
+### Version: 0.4
+Resume is a project that represents my own resumer. It is built with such technologies as jQuery, AngularJS and Velocity.js.
