@@ -101,7 +101,10 @@ var app = angular.module("Resume", [])
                 };
             }])
         .controller("ProjectsController", ["$rootScope", "$scope", function ($rootScope, $scope) {
-                $scope.projectsToShow = 1;
+                $scope.projectsToShow = Infinity;
+                $scope.$watch("projectsToShow", function (newValue, oldValue) {
+                    console.log("projectsToShow Changed: from(%s) to(%s)", oldValue, newValue);
+                });
                 $scope.loadMoreProjects = function (howMany) {
                     $scope.projectsToShow += howMany;
                 };
@@ -208,7 +211,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "Tetraedroid",
-                        description: "Compound of 2 tetrahedra spining around it's different axis. Made on Windows using Visual C++ and DriectX APIs",
+                        description: "Compound of 2 tetrahedra spining around it's axis. Made on Windows using Visual C++ and DriectX APIs",
                         techs: {
                             langs: [{title: "C++/CLI (.NET)", no_image: true}],
                             libs: [{title: "DirectX (Direct3D)", image: "/images/directx.png"}],

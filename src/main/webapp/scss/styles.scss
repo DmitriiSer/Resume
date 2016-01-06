@@ -50,7 +50,7 @@ canvas {
 // square on canvas
 .popSquare {
     position: fixed;
-    zIndex: 0;
+    z-index: 0;
 }
 // headings
 #{headings()} {
@@ -88,7 +88,7 @@ small > i { word-wrap: break-word; }
     width: 20px;
     height: 20px;
     border-left: $changeView_border_width solid transparent;
-    border-top: $changeView_border_width solid $c1;
+    border-top: $changeView_border_width solid $c2;
     border-right: $changeView_border_width solid $c4;
     border-bottom: $changeView_border_width solid transparent;
 }
@@ -97,7 +97,7 @@ small > i { word-wrap: break-word; }
     width: 25px;
     height: 25px;
     border-top-color: $c4;
-    border-right-color: $c1;
+    border-right-color: $c2;
 }
 // sections
 section {
@@ -112,10 +112,13 @@ section {
         margin: auto;
         text-align: center;
         overflow: hidden;
-        a:not(:last-child):hover {
-            @include text-shadow($textColor 1px 1px 2px, $textColor -1px -1px 2px);
+        a:hover {
+            $alpha : 0.7;
+            $blur  : 2px;
+            $offset: 2px;
+            @include text-shadow(rgba($textColor, $alpha) (-$offset) (-$offset) $blur, rgba($textColor, $alpha) $offset $offset $blur);
         }
-        a:hover > li > i {
+        a > li > i {
             @include text-shadow(none);
         }
         ul.horizontal {
