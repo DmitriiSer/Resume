@@ -105,8 +105,14 @@ node_modules
 www
 !*/www
 
-# test files
+# Test Files
 *test*
 /*test*
 /*/*test*
 /*/*/*test*
+
+# All Bower lib files
+/src/main/webapp/lib/*/*
+# except
+!/src/main/webapp/lib/*/*.js
+!/src/main/webapp/lib/*/dist/*.js
