@@ -111,7 +111,7 @@ var app = angular.module("Resume", [])
                         title: "Lister",
                         link: "https://github.com/DmitriiSer/Lister",
                         tooltip: "Go To GitHub Project Page",
-                        description: "This project is a try to create an application that would find cheapest flights around the world using different search engines (e.g Expedia, RyanAir, etc.). Is consist of 2 parts: the server and the client. The server receives request from client app and pushs/fetches entries to DB which is MySQL instance. The client is a desktop applcation to provide UI to users.",
+                        description: "Lister is a mobile-ready, natively looking, AngularJS and Ionic powered HTML5 todo organizer",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -156,7 +156,7 @@ var app = angular.module("Resume", [])
                         title: "Foodnetwork Recipe to Cozi Meals (Google Chrome/Opera Extension)",
                         link: "https://github.com/DmitriiSer/WebProjects/tree/master/Chrome%20Extensions/Foodnetwork%20Recipe%20to%20Cozi%20Meals",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Chrome/Opera extension that allows to transfer the whole recipe from Foodnetwork recipe page to Cozi Meals recipe by pressing a button in popup window of the extension",
+                        description: "Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork recipe page to Cozi Meals recipe by pressing a button in popup window of the extension",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -189,7 +189,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "CheapFly",
-                        description: "This project is a try to create an application that would find cheapest flights around the world using different search engines (e.g Expedia, RyanAir, etc.). Is consist of 2 parts: the server and the client. The server receives request from client app and pushs/fetches entries to DB which is MySQL instance. The client is a desktop applcation to provide UI to users",
+                        description: "This project creates an application that would find the cheapest flights around the world using different search engines (e.g Expedia, RyanAir, etc.). It consist of 2 parts: the server and the client. The server receives request from client app and pushs/fetches entries to DB which is MySQL instance. The client is a desktop application to provide UI to users",
                         techs: {
                             langs: [{title: "C++/CLI (.NET)", no_image: true}],
                             libs: [{title: "Boost (ASIO)", image: "/images/boost_asio.png"}],
@@ -208,7 +208,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "Tetraedroid",
-                        description: "Compound of 2 tetrahedra spining around it's axis. Made on Windows using Visual C++ and DriectX APIs",
+                        description: "Compound of 2 tetrahedra spinning around it's axis. Made on Windows using Visual C++ and DriectX APIs",
                         techs: {
                             langs: [{title: "C++/CLI (.NET)", no_image: true}],
                             libs: [{title: "DirectX (Direct3D)", image: "/images/directx.png"}],
@@ -217,7 +217,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "PDFToXLS",
-                        description: "Application that allowes to create XLS spreadsheet file from PDF using an online service. Basicaly it creates HTTPRequests to that web service, uploads a file and gets the result file back",
+                        description: "Application that allowes to create XLS spreadsheet file from PDF using an online service. It creates HTTPRequests to that web service, uploads a file and gets the result file back",
                         techs: {
                             langs: [{title: "C++/CLI (.NET)", no_image: true}],
                             libs: [],
