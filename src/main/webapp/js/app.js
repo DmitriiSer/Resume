@@ -111,7 +111,7 @@ var app = angular.module("Resume", [])
                         title: "Lister",
                         link: "https://github.com/DmitriiSer/Lister",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Lister is a mobile-ready, natively looking, AngularJS and Ionic powered HTML5 todo organizer",
+                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript and is mobile-ready, natively looking, and backed by AngularJS and Ionic Fraeworks",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -137,7 +137,7 @@ var app = angular.module("Resume", [])
                         title: "AdvancedCarousel",
                         link: "https://github.com/DmitriiSer/WebProjects/tree/master/AdvancedCarousel",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Representation of an image carousel",
+                        description: "Representation of a HTML image carousel",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -156,7 +156,7 @@ var app = angular.module("Resume", [])
                         title: "Foodnetwork Recipe to Cozi Meals (Google Chrome/Opera Extension)",
                         link: "https://github.com/DmitriiSer/WebProjects/tree/master/Chrome%20Extensions/Foodnetwork%20Recipe%20to%20Cozi%20Meals",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork recipe page to Cozi Meals recipe by pressing a button in popup window of the extension",
+                        description: "Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork recipe page to Cozi Meals recipe by pressing a button in the popup window of the extension",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -171,7 +171,7 @@ var app = angular.module("Resume", [])
                         title: "Resume",
                         link: "https://github.com/DmitriiSer/WebProjects/tree/master/Resume",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Animated version of this resume",
+                        description: "Web-based animated version of this resume",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -189,7 +189,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "CheapFly",
-                        description: "This project creates an application that would find the cheapest flights around the world using different search engines (e.g Expedia, RyanAir, etc.). It consist of 2 parts: the server and the client. The server receives request from client app and pushs/fetches entries to DB which is MySQL instance. The client is a desktop application to provide UI to users",
+                        description: "This on-going project creates an application that would find the cheapest flights around the world using different search engines (e.g Expedia, RyanAir, etc.). It consist of 2 parts: the server and the client. The server receives request from client app and pushs/fetches entries to DB which is MySQL instance. The client is a desktop application to provide UI to users",
                         techs: {
                             langs: [{title: "C++/CLI (.NET)", no_image: true}],
                             libs: [{title: "Boost (ASIO)", image: "/images/boost_asio.png"}],
@@ -217,7 +217,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "PDFToXLS",
-                        description: "Application that allowes to create XLS spreadsheet file from PDF using an online service. It creates HTTPRequests to that web service, uploads a file and gets the result file back",
+                        description: "Application that allowes the user to create XLS spreadsheet file from PDF using an online service. It creates HTTPRequests to that web service, uploads a file and gets the result file back",
                         techs: {
                             langs: [{title: "C++/CLI (.NET)", no_image: true}],
                             libs: [],
