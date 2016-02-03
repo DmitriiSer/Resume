@@ -111,7 +111,7 @@ var app = angular.module("Resume", [])
                         title: "Lister",
                         link: "https://github.com/DmitriiSer/Lister",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript and is mobile-ready, natively looking, and backed by AngularJS and Ionic Fraeworks",
+                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, Java and is mobile-ready, natively looking, and backed by AngularJS and Ionic Fraeworks",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
