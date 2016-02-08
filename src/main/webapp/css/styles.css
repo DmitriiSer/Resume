@@ -99,16 +99,25 @@ small > i {
   position: fixed;
   top: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
-  border-left: 8px solid transparent;
-  border-top: 8px solid #D1DBBD;
-  border-right: 8px solid #3E606F;
-  border-bottom: 8px solid transparent; }
+  /*width: 200px;
+  height: 20px;*/
+  padding: 1px 5px;
+  text-align: right;
+  background: #193441;
+  color: #FCFFF5;
+  border: 1px solid #D1DBBD;
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  /*border-left: $changeView_border_width solid transparent;
+  border-top: $changeView_border_width solid $c2;
+  border-right: $changeView_border_width solid $c4;
+  border-bottom: $changeView_border_width solid transparent;*/ }
 
 #changeView:hover {
-  width: 25px;
-  height: 25px;
+  /*width: 25px;
+  height: 25px;*/
   border-top-color: #3E606F;
   border-right-color: #D1DBBD; }
 

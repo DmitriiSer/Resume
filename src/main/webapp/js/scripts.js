@@ -215,10 +215,12 @@ var EventHandlers = {
     changeViewClickEventHandler: function () {
         if ($("html").hasClass("print")) {
             $("html").removeClass("print");
-            $("#changeView").attr("title", "Go to printable page view");
+            //$("#changeView").attr("title", "Go to printable page view");
+            $("#changeView").html("Go to printable page view");
         } else {
             $("html").addClass("print");
-            $("#changeView").attr("title", "Go to animated page view");
+            //$("#changeView").attr("title", "Go to animated page view");
+            $("#changeView").html("Go to animated page view");
         }
         $(document).tooltip({
             content: function () {
@@ -310,7 +312,9 @@ var EventHandlers = {
     beforePrint: function () {
         //this.projectsToShow = Helpers.getProjectsToShow();
         //Helpers.setProjectsToShow(Infinity);
-        EventHandlers.changeViewClickEventHandler();
+        setTimeout(function () {
+            EventHandlers.changeViewClickEventHandler()
+        }, 100);
     },
     // finish printing/close the print dialog event handler
     afterPrint: function () {

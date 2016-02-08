@@ -81,21 +81,30 @@ h6 {
 small > i { word-wrap: break-word; }
 // change view button 
 #changeView {
-    position: fixed;
+    position: fixed;    
     top: 0;
     right: 0;
     $changeView_border_width: 20px / 2.5;
-    width: 20px;
-    height: 20px;
-    border-left: $changeView_border_width solid transparent;
+    /*width: 200px;
+    height: 20px;*/
+    padding: 1px 5px;
+    text-align: right;
+    background: $c5;
+    color: $c1;
+    border: 1px solid $c2; 
+    border-top: none;
+    border-right: none;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;    
+    /*border-left: $changeView_border_width solid transparent;
     border-top: $changeView_border_width solid $c2;
     border-right: $changeView_border_width solid $c4;
-    border-bottom: $changeView_border_width solid transparent;
+    border-bottom: $changeView_border_width solid transparent;*/
 }
 #changeView:hover {
     $changeView_border_width: 25px / 2.5;
-    width: 25px;
-    height: 25px;
+    /*width: 25px;
+    height: 25px;*/
     border-top-color: $c4;
     border-right-color: $c2;
 }
