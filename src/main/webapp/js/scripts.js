@@ -212,7 +212,9 @@ var EventHandlers = {
         Helpers.responsiveTable($("table"));
     },
     // changeView button click event handler
-    changeViewClickEventHandler: function () {
+    changeViewClickEventHandler: function (e) {
+        if (e.target.nodeName == "A")
+            return;
         if ($("html").hasClass("print")) {
             $("html").removeClass("print");
             //$("#changeView").attr("title", "Go to printable page view");
