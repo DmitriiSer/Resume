@@ -110,6 +110,7 @@ small > i {
   border-right: none;
   border-bottom-left-radius: 5px;
   cursor: pointer;
+  z-index: 1000;
   /*border-left: $changeView_border_width solid transparent;
   border-top: $changeView_border_width solid $c2;
   border-right: $changeView_border_width solid $c4;
