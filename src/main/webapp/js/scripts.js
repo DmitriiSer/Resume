@@ -216,11 +216,11 @@ var EventHandlers = {
         if ($("html").hasClass("print")) {
             $("html").removeClass("print");
             //$("#changeView").attr("title", "Go to printable page view");
-            $("#changeView").html("Go to printable page view");
+            $("#changeView").html("Go to printable page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
         } else {
             $("html").addClass("print");
             //$("#changeView").attr("title", "Go to animated page view");
-            $("#changeView").html("Go to animated page view");
+            $("#changeView").html("Go to animated page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
         }
         $(document).tooltip({
             content: function () {
