@@ -20,10 +20,7 @@
     border-bottom: $border-width solid $borderColor;
 }
 // All elements
-* {
-    @include box-sizing(border-box);    
-    //border: 1px double white;
-}
+* { @include box-sizing(border-box); }
 // html and body
 html, body {
     background-color: $pageBackgroundColor;
@@ -39,7 +36,8 @@ html, body {
 #bodyContainer {
     width: 90%;
     margin: auto;
-    z-index: 0; 
+    z-index: 0;
+    @include box-shadow($c4 0px 0px 10px 0px);
 }
 // canvas
 canvas { 
@@ -61,7 +59,7 @@ canvas {
     @include text-shadow(1px 1px 0px rgba($textShadowColor, 0.4), -1px -1px 0px rgba(black, 0.6));
     word-wrap: break-word;
 }
-h1 { margin: 2rem 0.5rem; }
+h1 { margin: 1rem 0.5rem; }
 #{headings(2,6)} { letter-spacing: 2px; }
 #{headings(1,3)} { text-align: center; }
 #{headings(4,6)} { text-align: left; }
@@ -73,12 +71,25 @@ h4 {
     padding: 0.3rem; 
     padding-bottom: 0.3rem;     
 }
+h5 > span {
+    font-family: $fontPrimary;
+    /*font-weight: 700;*/
+    letter-spacing: 0px;
+    @include text-shadow(none);
+}
 h6 {
     font-family: $fontSecondary;
     font-size: small;
+    /*font-weight: 200;*/
     letter-spacing: 0.13rem;
+    @include text-shadow(none);
+}
+.less-margin {
+    margin: 0.1rem;
 }
 small > i { word-wrap: break-word; }
+.page3 > section { margin: 0 -10px 8px -10px; }
+.page4 > section { margin: 0 -26px 8px -50px; }
 // change view button 
 #changeView {
     position: fixed;    
@@ -114,7 +125,7 @@ section {
     font-family: $fontPrimary;
     padding: 1px 10px;
 }
-#heading {
+.heading {
     @include background(linear-gradient(to bottom,
     lighten($headerBackgroundColor, 20),
     $headerBackgroundColor));
@@ -165,16 +176,24 @@ section {
 #experience {
     /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $c2, $c5));*/
     background-color: $c2;
-    @include background(linear-gradient(to bottom, $c4, $c2, $c2));
+    /*@include background(linear-gradient(to bottom, $c4, $c2, $c2));*/
+    /*
+    rgb(66, 89, 134)    magenta
+    rgb(77, 112, 153)
+    rgb(99, 117, 136)
+    rgb(80, 156, 179)   lightblue 
+    rgb(149, 172, 168)  turqois-gray
+    rgb(166, 206, 187)  turqois
+    rgb(201, 202, 178)  beige
+    */    
+    /*@include background(linear-gradient(to bottom, rgb(66, 89, 134), rgb(80, 156, 179), rgb(149, 172, 168), rgb(166, 206, 187), rgb(201, 202, 178)));*/
+    @include background(linear-gradient(to bottom, rgb(77, 112, 153), rgb(80, 156, 179), rgb(201, 202, 178)));
     color: $c5;
-    /*nclude single-box-shadow($hoff, $voff, $blur, $spread, $color, $inset)*/
-    @include box-shadow($c4 0px 0px 20px 0px inset)
 }
 #education {
     /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $backgroundColor, $c5));*/
-    @include background-image(image-url("Hexagon.jpg"));
-    @include background-size(cover);
-    @include box-shadow($c4 0px 5px 5px 0px inset);
+    @include background(linear-gradient(to bottom, rgb(201, 202, 178), rgb(166, 206, 187), rgb(149, 172, 168)));
+    /*@include box-shadow($c4 0px 5px 5px 0px inset);*/
     color: $c5;
 }
 .technologie {
@@ -194,9 +213,9 @@ section {
 .technologie-span {
     display: inline-block;
     height: 24px;
-    margin-right: 10px;
+    margin-right: 5px;
     padding-right: 10px;
-    border: 1px solid $c3;
+    border: 1px solid $c5;
     border-radius: 24px;
     overflow: hidden;
 }
@@ -295,10 +314,11 @@ table {
 //style to change view of the page to printable view
 .print {
     .border-t, .border-b, .border-tb { border-color: black; }
-    #heading > #info > hr { @include background(black); }
-    html, body, #{headings()}, #heading, #objective, #experience, #education {
+    .heading > #info > hr { @include background(black); }
+    html, body, #{headings()}, .heading, #objective, #experience, #education {
         @include background(white);
         color: black;
+        @include box-shadow(0 0 0 0 rgba(0,0,0,0));
         @include text-shadow(none);
         border-color: black;
     }
@@ -314,6 +334,9 @@ table {
     }
 }
 @media screen {
+    .showOnlyWhenPrinting {
+        display: none;
+    }
     .page-footer {
         display: none;
     }

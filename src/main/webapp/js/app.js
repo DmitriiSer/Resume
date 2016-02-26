@@ -1,4 +1,10 @@
 var app = angular.module("Resume", [])
+        .directive("headerElement", function () {
+            return {
+                restrict: "E",
+                "templateUrl": "partials/header.html"
+            };
+        })
         .directive("reachedToBottom", ["$window", function ($window) {
                 return {
                     link: function (scope, element, attrs) {
@@ -169,7 +175,7 @@ var app = angular.module("Resume", [])
                         }
                     },
                     {
-                        title: "Foodnetwork Recipe to Cozi Meals (Google Chrome/Opera Extension)",
+                        title: "Foodnetwork Recipe to Cozi (Browser Extension)",
                         link: "https://github.com/DmitriiSer/WebProjects/tree/master/Chrome%20Extensions/Foodnetwork%20Recipe%20to%20Cozi%20Meals",
                         tooltip: "Go To GitHub Project Page",
                         description: "Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork recipe page to Cozi Meals recipe by pressing a button in the popup window of the extension",
@@ -185,7 +191,7 @@ var app = angular.module("Resume", [])
                     },
                     {
                         title: "Resume",
-                        link: "https://github.com/DmitriiSer/WebProjects/tree/master/Resume",
+                        link: "https://github.com/DmitriiSer/Resume",
                         tooltip: "Go To GitHub Project Page",
                         description: "Web-based animated version of this resume",
                         techs: {
