@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Droid Serif", serif;
   font-weight: 700;
   letter-spacing: 0.4rem;
-  text-shadow: 1px 1px 0px rgba(116, 148, 131, 0.4), -1px -1px 1px rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 0px rgba(116, 148, 131, 0.4), -1px -1px 0px rgba(0, 0, 0, 0.6);
   word-wrap: break-word; }
 
 h1 {
@@ -173,19 +173,30 @@ section {
     border-bottom: 2px solid #2e2442; }
 
 #experience {
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA0MDgwYSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjM2U2MDZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTkzNDQxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #04080a), color-stop(50%, #3e606f), color-stop(100%, #193441));
-  background: -moz-linear-gradient(top, #04080a, #3e606f, #193441);
-  background: -webkit-linear-gradient(top, #04080a, #3e606f, #193441);
-  background: linear-gradient(to bottom, #04080a, #3e606f, #193441);
-  color: #91AA9D; }
+  /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $c2, $c5));*/
+  background-color: #D1DBBD;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNlNjA2ZiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZDFkYmJkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZDFkYmJkIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3e606f), color-stop(50%, #d1dbbd), color-stop(100%, #d1dbbd));
+  background: -moz-linear-gradient(top, #3e606f, #d1dbbd, #d1dbbd);
+  background: -webkit-linear-gradient(top, #3e606f, #d1dbbd, #d1dbbd);
+  background: linear-gradient(to bottom, #3e606f, #d1dbbd, #d1dbbd);
+  color: #193441;
+  /*nclude single-box-shadow($hoff, $voff, $blur, $spread, $color, $inset)*/
+  -moz-box-shadow: #3E606F 0px 0px 20px 0px inset;
+  -webkit-box-shadow: #3E606F 0px 0px 20px 0px inset;
+  box-shadow: #3E606F 0px 0px 20px 0px inset; }
 
 #education {
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA0MDgwYSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTkzNDQxIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTkzNDQxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #04080a), color-stop(50%, #193441), color-stop(100%, #193441));
-  background: -moz-linear-gradient(top, #04080a, #193441, #193441);
-  background: -webkit-linear-gradient(top, #04080a, #193441, #193441);
-  background: linear-gradient(to bottom, #04080a, #193441, #193441); }
+  /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $backgroundColor, $c5));*/
+  background-image: url('/images/Hexagon.jpg?1456499030');
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  -moz-box-shadow: #3E606F 0px 5px 5px 0px inset;
+  -webkit-box-shadow: #3E606F 0px 5px 5px 0px inset;
+  box-shadow: #3E606F 0px 5px 5px 0px inset;
+  color: #193441; }
 
 .technologie {
   /*height: 24px;

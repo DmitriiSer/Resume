@@ -58,7 +58,7 @@ canvas {
     font-family: $fontHeaders;
     font-weight: 700;
     letter-spacing: 0.4rem;
-    @include text-shadow(1px 1px 0px rgba($textShadowColor, 0.4), -1px -1px 1px rgba(black,0.6));
+    @include text-shadow(1px 1px 0px rgba($textShadowColor, 0.4), -1px -1px 0px rgba(black, 0.6));
     word-wrap: break-word;
 }
 h1 { margin: 2rem 0.5rem; }
@@ -163,11 +163,19 @@ section {
     }
 }
 #experience {
-    @include background(linear-gradient(to bottom, $headerBackgroundColor, $c4, $c5));
-    color: $c3;
+    /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $c2, $c5));*/
+    background-color: $c2;
+    @include background(linear-gradient(to bottom, $c4, $c2, $c2));
+    color: $c5;
+    /*nclude single-box-shadow($hoff, $voff, $blur, $spread, $color, $inset)*/
+    @include box-shadow($c4 0px 0px 20px 0px inset)
 }
 #education {
-    @include background(linear-gradient(to bottom, $headerBackgroundColor, $backgroundColor, $c5));
+    /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $backgroundColor, $c5));*/
+    @include background-image(image-url("Hexagon.jpg"));
+    @include background-size(cover);
+    @include box-shadow($c4 0px 5px 5px 0px inset);
+    color: $c5;
 }
 .technologie {
     /*height: 24px;

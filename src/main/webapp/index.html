@@ -84,21 +84,12 @@
                 <div class="border-b">
                     <h3>Professional Experience</h3>
                 </div>
-                <div>
+                <div ng-controller="ExperienceController">
                     <h4><a href="http://smartmetering.ru/">Engineering Centre "ENERGOAUDITCONTROL", LLC - Saint-Petersburg, Russia</a></h4>
-                    <h5><u>Team Lead of Department of Maintaning Servers</u>, September 2009 – May 2015</h5>
+                    <h5><u>Team Lead of Department of Maintaining Servers</u>, Sept 2009 – May 2015</h5>
                     <h5>Key Results:</h5>
-                    <ul class="normal">                    
-                        <li>Managed a team of specialists to provide trouble-free operation of customers' retail servers.</li>
-                        <li>Created plans and schedules to maintain customers' servers</li>
-                        <li>Organized emergency server maintenance</li>
-                        <li>Verified team members' work</li>
-                        <li>Checked the system availability daily</li>
-                        <li>Created reports and reported to manager</li>
-                        <li>Controlled branch software supplies</li>
-                        <li>Helped to maintain branch Windows 2003 servers, branch domain controller servers</li>
-                        <li>Helped to set up and maintain campus Kerio WinRoute and Kerio Control network protection products</li>
-                        <li>Helped to maintain campus LAN and provided branch user support</li>
+                    <ul class="normal">
+                        <li ng-repeat="key in data.key_results">{{key}}</li>
                     </ul>
                 </div>
             </section>
@@ -107,17 +98,17 @@
                 <div class="border-tb"><h3>Education / Certification / Projects</h3></div>
                 <div class="border-b">
                     <h4>Education</h4>
-                    <h5>THE BONCH-BRUEVICH SAINT-PETERSBURG STATE UNIVERSITY OF TELECOMMUNICATIONS — Saint-Petesburg, Russia</h5>
+                    <h5>The Bonch-Bruevich Saint-Petersburg State University of Telecommunications - Saint-Petersburg, Russia</h5>
                     <p>
                         <small>
-                            Specialist Degree / Information Systems – 2009<br>
+                            Specialist Degree / Information Systems – 2009<br/>
                             (US equivalent: B.S. Computer Science)
                         </small>
                     </p>
                 </div>
                 <div>
                     <h4>Certificates</h4>
-                    <h5>ORACLE CERTIFIED ASSOCIATE, JAVA SE 7 PROGRAMMER — December, 2014</h5>
+                    <h5>Oracle Certified Associate, Java SE 7 Programmer — Dec, 2014</h5>
                 </div>
                 <div class="page-break"></div>
                 <div class="border-b"></div>
@@ -150,7 +141,7 @@
                                                   style="display: inline-block; height: 24px; vertical-align: {{((tech.no_image) ? 'sub' : 'initial')}}">{{tech.title}}</span>
                                         </span>
                                     </div>
-                                    <div ng-show="project.description"><u>Description:</u><br></div>
+                                    <div ng-show="project.description"><u>Description:</u><br/></div>
                                 </i>
                             </small>
                             <h6 ng-show="project.description">{{project.description}}</h6>

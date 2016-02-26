@@ -100,6 +100,22 @@ var app = angular.module("Resume", [])
                     }
                 };
             }])
+        .controller("ExperienceController", ["$scope", function ($scope) {
+                $scope.data = {
+                    key_results: [
+                        "Managed a team of specialists to provide trouble-free operation of customers' retail servers",
+                        "Created plans and schedules to maintain customers' servers",
+                        "Organized emergency server maintenance",
+                        "Verified team members' work",
+                        "Checked the system availability daily",
+                        "Created reports and reported to manager",
+                        "Controlled branch software supplies",
+                        "Helped to maintain branch Windows 2003 servers, branch domain controller servers",
+                        "Helped to set up and maintain campus Kerio WinRoute and Kerio Control network protection products",
+                        "Helped to maintain campus LAN and provided branch user support"
+                    ]
+                };
+            }])
         .controller("ProjectsController", ["$rootScope", "$scope", function ($rootScope, $scope) {
                 $scope.projectsToShow = Infinity;
                 $scope.loadMoreProjects = function (howMany) {
@@ -111,7 +127,7 @@ var app = angular.module("Resume", [])
                         title: "Lister",
                         link: "https://github.com/DmitriiSer/Lister",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, Java and is mobile-ready, natively looking, and backed by AngularJS and Ionic Fraeworks",
+                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, Java and is mobile-ready, natively looking, and backed by AngularJS and Ionic Frameworks",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -187,42 +203,43 @@ var app = angular.module("Resume", [])
                             ides: [{title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}],
                         }
                     },
-                    {
-                        title: "CheapFly",
-                        description: "This on-going project creates an application that would find the cheapest flights around the world using different search engines (e.g Expedia, RyanAir, etc.). It consist of 2 parts: the server and the client. The server receives request from client app and pushs/fetches entries to DB which is MySQL instance. The client is a desktop application to provide UI to users",
-                        techs: {
-                            langs: [{title: "C++/CLI (.NET)", no_image: true}],
-                            libs: [{title: "Boost (ASIO)", image: "/images/boost_asio.png"}],
-                            ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}],
-                            dbs: [{title: "MySQL"}],
-                        }
-                    },
-                    {
-                        title: "AELS Sniffer",
-                        description: "Simple network traffic analyzer",
-                        techs: {
-                            langs: [{title: "C++"}],
-                            libs: [{title: "WinPcap", no_image: true}],
-                            ides: [{title: "Borland C++ Builder 5/6", image: "/images/bcb6.png"}]
-                        }
-                    },
-                    {
-                        title: "Tetraedroid",
-                        description: "Compound of 2 tetrahedra spinning around it's axis. Made on Windows using Visual C++ and DriectX APIs",
-                        techs: {
-                            langs: [{title: "C++/CLI (.NET)", no_image: true}],
-                            libs: [{title: "DirectX (Direct3D)", image: "/images/directx.png"}],
-                            ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}]
-                        }
-                    },
-                    {
-                        title: "PDFToXLS",
-                        description: "Application that allowes the user to create XLS spreadsheet file from PDF using an online service. It creates HTTPRequests to that web service, uploads a file and gets the result file back",
-                        techs: {
-                            langs: [{title: "C++/CLI (.NET)", no_image: true}],
-                            libs: [],
-                            ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}]
-                        }
-                    }
+                    /*
+                     {
+                     title: "CheapFly",
+                     description: "This on-going project creates an application that would find the cheapest flights around the world using different search engines (e.g. Expedia, RyanAir, etc.). It consist of 2 parts: the server and the client. The server receives request from client app and pushes/fetches entries to DB which is MySQL instance. The client is a desktop application to provide UI to users",
+                     techs: {
+                     langs: [{title: "C++/CLI (.NET)", no_image: true}],
+                     libs: [{title: "Boost (ASIO)", image: "/images/boost_asio.png"}],
+                     ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}],
+                     dbs: [{title: "MySQL"}],
+                     }
+                     },
+                     {
+                     title: "AELS Sniffer",
+                     description: "Simple network traffic analyzer",
+                     techs: {
+                     langs: [{title: "C++"}],
+                     libs: [{title: "WinPcap", no_image: true}],
+                     ides: [{title: "Borland C++ Builder 5/6", image: "/images/bcb6.png"}]
+                     }
+                     },
+                     {
+                     title: "Tetrahedroid",
+                     description: "Compound of 2 tetrahedra spinning around its axis. Made on Windows using Visual C++ and DirectX APIs",
+                     techs: {
+                     langs: [{title: "C++/CLI (.NET)", no_image: true}],
+                     libs: [{title: "DirectX (Direct3D)", image: "/images/directx.png"}],
+                     ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}]
+                     }
+                     },
+                     {
+                     title: "PDFToXLS",
+                     description: "Application that allows the user to create XLS spreadsheet file from PDF using an online service. It creates HTTPRequests to that web service, uploads a file and gets the result file back",
+                     techs: {
+                     langs: [{title: "C++/CLI (.NET)", no_image: true}],
+                     libs: [],
+                     ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}]
+                     }
+                     }*/
                 ];
             }]);
