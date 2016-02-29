@@ -25,14 +25,14 @@
         <noscript>Your browser does not support JavaScript!</noscript>
     </head>
     <body>
-        <div id="changeView" class="no-print" title1="Go to printable page view">
-            Go to printable page view</br>
+        <div id="changeView" class="no-print" title1="Go to printable page view" ng-click="$root.changeView();">
+            <span>Go to printable page view</span></br>
             <a href="https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf" style="color: #26b3f7">PDF-version</a>
         </div>
         <div id="bodyContainer">
             <section class="heading">
                 <h1><a href="https://github.com/DmitriiSer/">Dmitrii Serikov</a></h1>
-                <div class="border-tb" id="info">
+                <div class="info border-tb">
                     <ul class="horizontal">
                         <a href="https://www.google.com/maps/place/Medina+OH">
                             <li>3929 Barrington Dr.<i class="fa fa-certificate"></i></li>
@@ -51,15 +51,18 @@
                     <p>A result-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.</p>
                 </div>
                 <div class="border-tb"><h3>Specialties</h3></div>
-                <table ng-controller="BadgeController">
+                <table ng-controller="BadgeController" on-before-print="onBeforePrint()" on-after-print="onAfterPrint()">
                     <tr ng-repeat="row in data">
                         <td colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
                             width="{{item.width}}"
+                            ng-style="{'text-align': ($root.printable) ? 'left' : 'center'}"
                             ng-repeat="item in row.col">
-                            {{item.name}}:
-                            <ul class="badge-container"
+                            <span ng-style="{'text-decoration': ($root.printable) ? 'underline' : 'none'}">{{item.name}}</span>:
+                            <!-- animated version -->
+                            <ul class="badge-container no-print"
                                 size="{{(item.size) ? item.size : 64}}"
-                                shape="{{(item.shape === undefined) ? '' : item.shape}}">
+                                shape="{{(item.shape === undefined) ? '' : item.shape}}"
+                                ng-hide="$root.updatePrintable()">
                                 <li class="badge"
                                     size="{{(badge.size) ? badge.size : (item.size) ? item.size : 64}}"
                                     ng-repeat="badge in item.badges">
@@ -74,22 +77,30 @@
                                     </a>
                                 </li>
                             </ul>
+                            <!-- printable version -->
+                            <ul class="angle-double-right toggle-no-show no-show">
+                                <!--ng-show="$root.updatePrintable()"-->
+                                <li ng-repeat="badge in item.badges">
+                                    <a href="{{badge.href}}" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
+                                        {{badge.title}}
+                                    </a>
+                                </li>
+                            </ul>
                         </td>
                     </tr>
                 </table>
             </section>
-            <span class="page-break"></span>
-            <header-element class="page2 showOnlyWhenPrinting"></header-element>
+            <div class="page-break"></div>
             <!--objective-->
             <section id="experience">
-                <div class="border-b">
+                <div class="border-tb">
                     <h3>Professional Experience</h3>
                 </div>
                 <div ng-controller="ExperienceController">
                     <h4><a href="http://smartmetering.ru/">Engineering Centre "ENERGOAUDITCONTROL", LLC - Saint-Petersburg, Russia</a></h4>
-                    <h5><u>Team Lead of Department of Maintaining Servers</u>, Sept 2009 – May 2015</h5>
+                    <h5>Team Leader of Department of Maintaining Servers, Sept 2009 – May 2015</h5>
                     <h5>Key Results:</h5>
-                    <ul class="normal">
+                    <ul class="normal angle-double-right">
                         <li ng-repeat="key in data.key_results">{{key}}</li>
                     </ul>
                 </div>
@@ -111,8 +122,8 @@
                     <h4>Certificates</h4>
                     <h5>Oracle Certified Associate, Java SE 7 Programmer — Dec, 2014</h5>
                 </div>
-                <div class="page-break"></div>
-                <header-element class="page3 showOnlyWhenPrinting"></header-element>
+                <!--<footer-element class="page3 showOnlyWhenPrinting"></footer-element>-->
+                <footer-element class="page2 showOnlyWhenPrinting"></footer-element>
                 <div class="border-b"></div>
                 <div id="projects">
                     <h4>Projects</h4>
@@ -120,7 +131,7 @@
                         reached-to-bottom="loadMoreProjects(1)"
                         ng-controller="ProjectsController">
                         <li ng-repeat="project in filtered = (data| filter: query | limitTo : projectsToShow
-                                        )">
+                                            )">
                             <h5 class="less-margin">{{project.title}}
                                 <span style="font-weight: normal" ng-show="project.link && project.tooltip">
                                     (<i><u><a href="{{project.link}}" title="{{project.tooltip}}">{{project.link}}</a></u></i>)
@@ -132,7 +143,7 @@
                                     <h6 ng-show="project.description">{{project.description}}</h6>
                                 </i>
                             </small>
-                            <small>
+                            <small class="no-print" ng-hide="$root.updatePrintable()">
                                 <i>
                                     <div class="technologie"
                                          ng-repeat="techs in project.techs">
@@ -154,9 +165,9 @@
                             </small>
                             <hr ng-show="$index < filtered.length - 1">
                             <div style="position: relative">
-                                <div class="page-break" ng-show="($index + 1) % 3 == 0"></div>
-                                <header-element class="page4 showOnlyWhenPrinting"
-                                                ng-show="($index + 1) % 3 == 0"></header-element>
+                                <!--<div class="page-break" ng-show="($index + 1) % 4 == 0"></div>
+                                <footer-element class="page4 showOnlyWhenPrinting"
+                                                ng-show="($index + 1) % 4 == 0"></footer-element>-->
                             </div>
                         </li>
                     </ol>

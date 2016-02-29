@@ -1,8 +1,8 @@
 var app = angular.module("Resume", [])
-        .directive("headerElement", function () {
+        .directive("footerElement", function () {
             return {
                 restrict: "E",
-                "templateUrl": "partials/header.html"
+                "templateUrl": "partials/footer.html"
             };
         })
         .directive("reachedToBottom", ["$window", function ($window) {
@@ -15,6 +15,120 @@ var app = angular.module("Resume", [])
                         });
                     }
                 }
+            }])
+        .directive("onBeforePrint", ["$window", "$rootScope", "$timeout", function onBeforePrint($window, $rootScope, $timeout) {
+                var beforePrintDirty = false;
+                var listeners = [];
+                var beforePrint = function () {
+                    if (beforePrintDirty)
+                        return;
+                    beforePrintDirty = true;
+                    if (listeners) {
+                        for (var i = 0, len = listeners.length; i < len; i++) {
+                            listeners[i].triggerHandler("beforePrint");
+                        }
+                        var scopePhase = $rootScope.$$phase;
+
+                        // This must be synchronious so we call digest here.
+                        if (scopePhase != "$apply" && scopePhase != "$digest") {
+                            $rootScope.$digest();
+                        }
+                    }
+                    $timeout(function () {
+                        // This is used for Webkit. For some reason this gets called twice there.
+                        beforePrintDirty = false;
+                    }, 100, false);
+                };
+                if ($window.matchMedia) {
+                    var mediaQueryList = $window.matchMedia("print");
+                    mediaQueryList.addListener(function (mql) {
+                        if (mql.matches)
+                            beforePrint();
+                    });
+                }
+                $window.onbeforeprint = beforePrint;
+                return function (scope, element, attrs) {
+                    function onBeforePrint() {
+                        $("html").addClass("print");
+                        $timeout(function () {
+                            scope.$eval(attrs.onBeforePrint);
+                        });
+                    }
+                    listeners.push(element);
+                    element.on("beforePrint", onBeforePrint);
+                    scope.$on("$destroy", function () {
+                        element.off("beforePrint", onBeforePrint);
+                        var pos = -1;
+                        for (var i = 0, len = listeners.length; i < len; i++) {
+                            var currentElement = listeners[i];
+                            if (currentElement === element) {
+                                pos = i;
+                                break;
+                            }
+                        }
+                        if (pos >= 0) {
+                            listeners.splice(pos, 1);
+                        }
+                    });
+                };
+            }])
+        .directive("onAfterPrint", ["$window", "$rootScope", "$timeout", function onAfterPrint($window, $rootScope, $timeout) {
+                var afterPrintDirty = false;
+                var listeners = [];
+                var afterPrint = function () {
+                    if (afterPrintDirty)
+                        return;
+                    afterPrintDirty = true;
+                    if (listeners) {
+                        for (var i = 0, len = listeners.length; i < len; i++) {
+                            listeners[i].triggerHandler("afterPrint");
+                        }
+                        var scopePhase = $rootScope.$$phase;
+                        // This must be synchronious so we call digest here.
+                        if (scopePhase != "$apply" && scopePhase != "$digest") {
+                            $rootScope.$digest();
+                        }
+                    }
+                    $timeout(function () {
+                        // This is used for Webkit. For some reason this gets called twice there.
+                        afterPrintDirty = false;
+                    }, 100, false);
+                };
+                if ($window.matchMedia) {
+                    var mediaQueryList = $window.matchMedia("print");
+                    mediaQueryList.addListener(function (mql) {
+                        if (!mql.matches)
+                            afterPrint();
+                    });
+                }
+                $window.onafterprint = afterPrint;
+                return function (scope, element, attrs) {
+                    function onAfterPrint() {
+                        $("html").removeClass("print");
+                        $timeout(function () {
+                            scope.$eval(attrs.onAfterPrint, function (e) {
+                                console.log(e);
+                                e.stopPropagation();
+                            });
+                        }, 0);
+                    }
+                    listeners.push(element);
+                    element.on("afterPrint", onAfterPrint);
+                    scope.$on("$destroy", function () {
+                        element.off("afterPrint", onAfterPrint);
+                        var pos = -1;
+                        for (var i = 0, len = listeners.length; i < len; i++) {
+                            var currentElement = listeners[i];
+                            if (currentElement === element) {
+                                pos = i;
+                                break;
+                            }
+                        }
+                        if (pos >= 0) {
+                            listeners.splice(pos, 1);
+                        }
+                    });
+                };
             }])
         .run(["$rootScope", function ($rootScope) {
                 $rootScope.imageSrc = function (obj) {
@@ -29,6 +143,14 @@ var app = angular.module("Resume", [])
                         img = obj.image.toLowerCase();
                     }
                     return img;
+                };
+                $rootScope.printable = false;
+                $rootScope.updatePrintable = function () {
+                    return $rootScope.printable;
+                };
+                $rootScope.changeView = function () {
+                    $rootScope.printable = !$rootScope.printable;
+                    $(".toggle-no-show").toggleClass("no-show");
                 };
             }])
         .controller("BadgeController", ["$rootScope", "$scope", function ($rootScope, $scope) {
@@ -45,11 +167,15 @@ var app = angular.module("Resume", [])
                                     {title: "CSS3", href: "http://www.w3.org/Style/CSS/"},
                                     {title: "JavaScript", href: "http://en.wikipedia.org/wiki/JavaScript"}
                                 ]
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        col: [
                             {
                                 name: "Frameworks & Libraries",
-                                size: 64,
-                                width: 200,
+                                size: 80/*64*/,
+                                width: 100,
                                 badges: [
                                     {title: "AngularJS", href: "https://angularjs.org/"},
                                     {title: "Ionic", href: "http://ionicframework.com/"},
@@ -63,9 +189,9 @@ var app = angular.module("Resume", [])
                         col: [
                             {
                                 name: "IDEs",
-                                colspan: 1,
-                                size: 72,
-                                width: 200,
+                                colspan: 2,
+                                size: 80,
+                                width: 100,
                                 badges: [
                                     {title: "NetBeans", href: "https://netbeans.org/"},
                                     {title: "Visual Studio", href: "https://www.visualstudio.com", image: "/images/visualstudio.png"},
@@ -105,6 +231,16 @@ var app = angular.module("Resume", [])
                         return "background-image: url(" + img + ")";
                     }
                 };
+                $scope.onBeforePrint = function () {
+                    $rootScope.printable = true;
+                    $scope.$apply($rootScope.updatePrintable());
+                    console.log("onBeforePrint::$rootScope.printable = %s", $rootScope.printable);
+                };
+                $scope.onAfterPrint = function () {
+                    $rootScope.printable = false;
+                    $(".toggle-no-show").toggleClass("no-show", true);
+                    console.log("onBeforePrint::$rootScope.printable = %s", $rootScope.printable);
+                };
             }])
         .controller("ExperienceController", ["$scope", function ($scope) {
                 $scope.data = {
@@ -112,13 +248,13 @@ var app = angular.module("Resume", [])
                         "Managed a team of specialists to provide trouble-free operation of customers' retail servers",
                         "Created plans and schedules to maintain customers' servers",
                         "Organized emergency server maintenance",
-                        "Verified team members' work",
-                        "Checked the system availability daily",
-                        "Created reports and reported to manager",
+                        /*"Verified team members' work",*/
+                        "Daily checked the system availability",
+                        /*"Created reports and reported to manager",*/
                         "Controlled branch software supplies",
-                        "Helped to maintain branch Windows 2003 servers, branch domain controller servers",
-                        "Helped to set up and maintain campus Kerio WinRoute and Kerio Control network protection products",
-                        "Helped to maintain campus LAN and provided branch user support"
+                        "Maintained branch proxy, domain controller and data servers",
+                        "Maintained branch Kerio WinRoute/Control security products",
+                        "Maintained branch LAN and provided user support"
                     ]
                 };
             }])
@@ -133,7 +269,7 @@ var app = angular.module("Resume", [])
                         title: "Lister",
                         link: "https://github.com/DmitriiSer/Lister",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, Java and is mobile-ready, natively looking, and backed by AngularJS and Ionic Frameworks",
+                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, Java and is mobile-ready, natively looking, and backed by AngularJS, Ionic and Bootstrap frameworks",
                         techs: {
                             langs: [
                                 {title: "HTML5"},

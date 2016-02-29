@@ -215,22 +215,20 @@ var EventHandlers = {
     changeViewClickEventHandler: function (e) {
         if (e && e.target.nodeName == "A")
             return;
-        setTimeout(function () {
-            if ($("html").hasClass("print")) {
-                $("html").removeClass("print");
-                //$("#changeView").attr("title", "Go to printable page view");
-                $("#changeView").html("Go to printable page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
-            } else {
-                $("html").addClass("print");
-                //$("#changeView").attr("title", "Go to animated page view");
-                $("#changeView").html("Go to animated page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
+        if ($("html").hasClass("print")) {
+            $("html").removeClass("print");
+            //$("#changeView").attr("title", "Go to printable page view");
+            $("#changeView").html("Go to printable page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
+        } else {
+            $("html").addClass("print");
+            //$("#changeView").attr("title", "Go to animated page view");
+            $("#changeView").html("Go to animated page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
+        }
+        $(document).tooltip({
+            content: function () {
+                return $(this).attr("title");
             }
-            $(document).tooltip({
-                content: function () {
-                    return $(this).attr("title");
-                }
-            });
-        }, 100);
+        });
     },
     // badge mouse enter event handler
     badgeMouseEnter: function (e) {
@@ -316,14 +314,11 @@ var EventHandlers = {
     beforePrinting: function () {
         //this.projectsToShow = Helpers.getProjectsToShow();
         //Helpers.setProjectsToShow(Infinity);
-        setTimeout(function () {
-            EventHandlers.changeViewClickEventHandler();
-        }, 100);
+        $("html").addClass("print");
     },
     // finish printing/close the print dialog event handler
     afterPrinting: function () {
-        //Helpers.setProjectsToShow(this.projectsToShow);
-        EventHandlers.changeViewClickEventHandler();
+        $("html").removeClass("print");
     }
 }
 // Animation
@@ -568,7 +563,7 @@ $(function () {
             else
                 EventHandlers.afterPrinting();
         });
-    }
-    window.onbeforeprint = EventHandlers.beforePrinting;
-    window.onafterprint = EventHandlers.afterPrinting;*/
+    }*/
+    //window.onbeforeprint = EventHandlers.beforePrinting;
+    //window.onafterprint = EventHandlers.afterPrinting;
 });

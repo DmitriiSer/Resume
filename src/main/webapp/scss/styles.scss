@@ -63,14 +63,22 @@ h1 { margin: 1rem 0.5rem; }
 #{headings(2,6)} { letter-spacing: 2px; }
 #{headings(1,3)} { text-align: center; }
 #{headings(4,6)} { text-align: left; }
+h3 {
+    font-size: 1.1rem;
+    margin: 0.2rem;
+}
 h4 {
     display: inline-block;
     border: $border-width solid $borderColor;
     border-top-color: transparent;
     margin-top: -$border-width;
     padding: 0.3rem; 
-    padding-bottom: 0.3rem;     
+    padding-bottom: 0.3rem;    
+    font-size: 1.0rem;
 }
+h4, h5 { margin-bottom: 3px; }
+h5 { letter-spacing: 0px; }
+h6 { margin: 4px 0px 8px; }
 h5 > span {
     font-family: $fontPrimary;
     /*font-weight: 700;*/
@@ -129,36 +137,34 @@ section {
     @include background(linear-gradient(to bottom,
     lighten($headerBackgroundColor, 20),
     $headerBackgroundColor));
-    #info {
+}
+.info {
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    a:hover {
+        $alpha : 0.7;
+        $blur  : 2px;
+        $offset: 2px;
+        @include text-shadow(rgba($textColor, $alpha) (-$offset) (-$offset) $blur, rgba($textColor, $alpha) $offset $offset $blur);
+    }
+    a > li > i { @include text-shadow(none); }
+    ul.horizontal {
         margin: auto;
-        text-align: center;
-        overflow: hidden;
-        a:hover {
-            $alpha : 0.7;
-            $blur  : 2px;
-            $offset: 2px;
-            @include text-shadow(rgba($textColor, $alpha) (-$offset) (-$offset) $blur, rgba($textColor, $alpha) $offset $offset $blur);
+        padding: 0px;
+        font-family: $fontSecondary;
+        li {
+            display: inline-block;
+            margin-left: -2px; margin-right: -2px;
+            i { margin-left: 0.5rem; margin-right: 0.5rem; }
         }
-        a > li > i {
-            @include text-shadow(none);
-        }
-        ul.horizontal {
-            margin: auto;
-            padding: 0px;
-            font-family: $fontSecondary;
-            li {
-                display: inline-block;
-                margin-left: -2px; margin-right: -2px;
-                i { margin-left: 0.5rem; margin-right: 0.5rem; }
-            }
-        }
-        hr {
-            border-width: 0;
-            @include background($borderColor);
-            height: $border-width * 2;
-            margin: 0px auto $border-width;
-            font-size: 0;
-        }
+    }
+    hr {
+        border-width: 0;
+        @include background($borderColor);
+        height: $border-width * 2;
+        margin: 0px auto $border-width;
+        font-size: 0;
     }
 }
 #objective {
@@ -187,7 +193,8 @@ section {
     rgb(201, 202, 178)  beige
     */    
     /*@include background(linear-gradient(to bottom, rgb(66, 89, 134), rgb(80, 156, 179), rgb(149, 172, 168), rgb(166, 206, 187), rgb(201, 202, 178)));*/
-    @include background(linear-gradient(to bottom, rgb(77, 112, 153), rgb(80, 156, 179), rgb(201, 202, 178)));
+    /*@include background(linear-gradient(to bottom, rgb(77, 112, 153), rgb(80, 156, 179), rgb(201, 202, 178)));*/
+    @include background(linear-gradient(to bottom, rgb(77, 112, 153), rgb(80, 156, 179),  rgb(80, 156, 179), rgb(201, 202, 178)));
     color: $c5;
 }
 #education {
@@ -238,6 +245,18 @@ ul.normal, ol.normal {
         margin-left: -0.5rem;
         margin-right: 0.5rem;
     }
+}
+.angle-double-right { 
+    text-align: left;
+    list-style-type: none;
+}
+.angle-double-right li:before {
+    font-family: 'FontAwesome';
+    content: '\f101';
+    margin:0 5px 0 -15px;
+}
+#project-list hr {
+    margin: 0;
 }
 //table
 table {
@@ -312,15 +331,20 @@ table {
     0 0 ($badge-size / 5) $badge-shadow-size darken($c5, 20));
 }
 //style to change view of the page to printable view
+/** { -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4); }*/
 .print {
     .border-t, .border-b, .border-tb { border-color: black; }
-    .heading > #info > hr { @include background(black); }
-    html, body, #{headings()}, .heading, #objective, #experience, #education {
+    .heading > .info > hr { @include background(black); }
+    * { -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4); }
+    html, body, #bodyContainer, #{headings()}, .heading, #objective, #experience, #education {
         @include background(white);
+        background-image: none !important;
         color: black;
         @include box-shadow(0 0 0 0 rgba(0,0,0,0));
         @include text-shadow(none);
         border-color: black;
+        /*border: none;
+        outline: none;*/
     }
     .badge, .technologie-badge {
         @include box-shadow();
@@ -337,9 +361,6 @@ table {
     .showOnlyWhenPrinting {
         display: none;
     }
-    .page-footer {
-        display: none;
-    }
 }
 @media only screen and (max-width: 767px) {
     #bodyContainer { width: 90%; }   
@@ -353,7 +374,14 @@ table {
 @media only screen and (min-width: 1680px) {
     #bodyContainer { width: 60%; }
 }
-@media print {    
+@media screen {
+    .no-show, .no-show * { display: none !important; }
+}
+@media print {
     .no-print, .no-print * { display: none !important; }
     .page-break { page-break-after: always; }
+}
+.page-footer {
+    position: fixed;
+    bottom : 0;
 }
