@@ -213,6 +213,8 @@ var EventHandlers = {
     },
     // changeView button click event handler
     changeViewClickEventHandler: function (e) {
+        console.log("changeViewClickEventHandler");
+        return;
         if (e && e.target.nodeName == "A")
             return;
         if ($("html").hasClass("print")) {
@@ -314,11 +316,11 @@ var EventHandlers = {
     beforePrinting: function () {
         //this.projectsToShow = Helpers.getProjectsToShow();
         //Helpers.setProjectsToShow(Infinity);
-        $("html").addClass("print");
+        //$("html").addClass("print");
     },
     // finish printing/close the print dialog event handler
     afterPrinting: function () {
-        $("html").removeClass("print");
+        //$("html").removeClass("print");
     }
 }
 // Animation
@@ -550,7 +552,7 @@ $(function () {
     $(window).on("resize", EventHandlers.resizeEventHandler);   // Window resize event
     $("html").on("resize", EventHandlers.resizeEventHandler);   // HTML resize event
     // click changeView button
-    $("#changeView").on("click", EventHandlers.changeViewClickEventHandler); // changeView button click event handler
+    //$("#changeView").on("click", EventHandlers.changeViewClickEventHandler); // changeView button click event handler
     // animate badges
     $(".badge").on("mouseenter", EventHandlers.badgeMouseEnter);// Badge mouse enter event
     $(".badge").on("mouseleave", EventHandlers.badgeMouseLeave);// Badge mouse leave event

@@ -25,9 +25,9 @@
         <noscript>Your browser does not support JavaScript!</noscript>
     </head>
     <body>
-        <div id="changeView" class="no-print" title1="Go to printable page view" ng-click="$root.changeView($event);">
-            <span>Go to printable page view</span></br>
-            <a href="" style="color: #26b3f7">PDF-version</a>
+        <div id="changeView" class="no-print" title1="Go to printable page view">
+            <span ng-click="$root.changeView()">{{$root.goToViewTitle}}</span></br>
+            <a ng-click="$root.downloadPDF()" href="" style="color: #26b3f7">PDF-version</a>
         </div>
         <div id="bodyContainer">
             <section class="heading">
@@ -52,14 +52,14 @@
                 </div>
                 <div class="border-tb"><h3>Specialties</h3></div>
                 <div ng-controller="BadgeController" on-before-print="onBeforePrint()" on-after-print="onAfterPrint()">
-                    <table id="badges"
-                           ng-hide="$root.printable">
-                        <!--style="background: red"-->
-                        <tr ng-repeat="row in getData()">
+                    <table id="table_badges"
+                           class="no-print toggle-no-show">
+                           <!--ng-hide="$root.printable"-->
+                        <tr ng-repeat="row in updateData()">
                             <td class="toggle-text-align"
                                 colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
                                 width="{{item.width}}"
-                                ng-style="{'text-align': ($root.printable) ? 'left' : 'center'}"
+                                style="text-align: center"
                                 ng-repeat="item in row.col">
                                 <span style="text-decoration: none">{{item.name}}</span>:
                                 <!-- animated version -->
@@ -83,8 +83,9 @@
                             </td>
                         </tr>
                     </table>
-                    <table class="toggle-no-show no-show">
-                        <tr ng-repeat="row in data">
+                    <table id="table_text" class="no-show toggle-no-show">
+                        <!--ng-show="$root.printable"-->
+                        <tr ng-repeat="row in updateData()">
                             <td
                                 colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
                                 width="{{item.width}}"
@@ -108,12 +109,15 @@
             <div class="page-break"></div>
             <!--objective-->
             <section id="experience">
-                <div class="border-tb">
+                <div class="border-tb" style="border-color: #2e2442">
                     <h3>Professional Experience</h3>
                 </div>
                 <div ng-controller="ExperienceController">
-                    <h4><a href="http://smartmetering.ru/">Engineering Centre "ENERGOAUDITCONTROL", LLC - Saint-Petersburg, Russia</a></h4>
-                    <h5>Team Leader of Department of Maintaining Servers, Sept 2009 – May 2015</h5>
+                    <h4 style="border-color: #2e2442">
+                        <a href="http://www.ackye.ru/en/">Engineering Centre "ENERGOAUDITCONTROL", LLC - Saint-Petersburg, Russia</a>
+                    </h4>
+                    <h5>Team Leader, Sept 2009 – May 2015</h5>
+                    <!--Department of Computer Information Systems / Department of Maintaining Servers-->
                     <h5>Key Results:</h5>
                     <ul class="normal angle-double-right">
                         <li ng-repeat="key in data.key_results">{{key}}</li>

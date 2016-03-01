@@ -130,7 +130,7 @@ var app = angular.module("Resume", [])
                     });
                 };
             }])
-        .run(["$rootScope", function ($rootScope) {
+        .run(["$rootScope", "$timeout", function ($rootScope, $timeout) {
                 $rootScope.imageSrc = function (obj) {
                     var img;
                     if (obj && obj.no_image) {
@@ -145,14 +145,41 @@ var app = angular.module("Resume", [])
                     return img;
                 };
                 $rootScope.printable = false;
-                $rootScope.changeView = function (e) {
-                    if (e && e.target.tagName == "A")
-                        window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf", "_blank");
-                    else {
-                        $rootScope.printable = !$rootScope.printable;
-                        $(".toggle-no-show").toggleClass("no-show");
+                $rootScope.goToViewTitle = "Go to printable page view";
+                $rootScope.changeView = function () {
+                    //$rootScope.printable = !$rootScope.printable;
+                    //
+                    //$(".toggle-no-show").toggleClass("no-show");
+                    var tb = $("#table_badges");
+                    var tt = $("#table_text");
+                    if ($rootScope.goToViewTitle == "Go to printable page view") {
+                        $rootScope.printable = true;
+                        tb.addClass("no-show");
+                        tt.removeClass("no-show");
+                    } else {
+                        $rootScope.printable = false;
+                        tb.removeClass("no-show");
+                        tt.addClass("no-show");
                     }
+                    //
+                    if ($("html").hasClass("print")) {
+                        $("html").removeClass("print");
+                        $rootScope.printable = false;
+                        $rootScope.goToViewTitle = "Go to printable page view";
+                    } else {
+                        $("html").addClass("print");
+                        $rootScope.printable = true;
+                        $rootScope.goToViewTitle = "Go to animated page view";
+                    }
+                    $(document).tooltip({
+                        content: function () {
+                            return $(this).attr("title");
+                        }
+                    });
                 };
+                $rootScope.downloadPDF = function () {
+                    window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf", "_blank");
+                }
             }])
         .controller("BadgeController", ["$rootScope", "$scope", "$timeout", function ($rootScope, $scope, $timeout) {
                 $scope.data = [
@@ -223,14 +250,9 @@ var app = angular.module("Resume", [])
                         ]
                     }
                 ];
-                $scope.tempData = $scope.data;
-                $scope.getData = function () {
-                    /*if ($scope.printable)
-                        return [];
-                    else*/
-                        return $scope.data;
-                    //console.log("$scope.data = %s", JSON.stringify($scope.data));
-                };
+                $scope.updateData = function () {
+                    return $scope.data;
+                }
                 $scope.backgroundStyle = function (badge) {
                     if (badge.no_image) {
                         return "";
@@ -241,21 +263,28 @@ var app = angular.module("Resume", [])
                     }
                 };
                 $scope.onBeforePrint = function () {
-                    $timeout(function () {
-                        $rootScope.printable = true;                        
+                    $scope.$apply(function () {
+                        $rootScope.printable = true;
                     });
                 };
                 $scope.onAfterPrint = function () {
-                    $timeout(function () {
+                    $scope.$apply(function () {
+                        var tb = $("#table_badges");
+                        var tt = $("#table_text");
+                        if (tb.hasClass("no-show"))
+                            tb.removeClass("no-show");
+                        if (!tt.hasClass("no-show"))
+                            tt.addClass("no-show");
+                        $rootScope.goToViewTitle = "Go to printable page view";
+                        //$(".toggle-no-show").toggleClass("no-show");
                         $rootScope.printable = false;
-                        $(".toggle-no-show").toggleClass("no-show", true);
                     });
                 };
             }])
         .controller("ExperienceController", ["$scope", function ($scope) {
                 $scope.data = {
                     key_results: [
-                        "Managed a team of specialists to provide trouble-free operation of customers' retail servers",
+                        "Controlled a small team of specialists to provide trouble-free operation of customers' retail servers",
                         "Created plans and schedules to maintain customers' servers",
                         "Organized emergency server maintenance",
                         /*"Verified team members' work",*/
