@@ -283,17 +283,19 @@ var app = angular.module("Resume", [])
             }])
         .controller("ExperienceController", ["$scope", function ($scope) {
                 $scope.data = {
+                    role: "Infrastructure Team Leader, Sept 2009 – May 2015",
+                    /*Department of Computer Information Systems / Department of Maintaining Servers*/
+                    /*automated energy metering systems"",*/
                     key_results: [
                         "Controlled a small team of specialists to provide trouble-free operation of customers' retail servers",
                         "Created plans and schedules to maintain customers' servers",
                         "Organized emergency server maintenance",
                         /*"Verified team members' work",*/
-                        "Daily checked the system availability",
+                        /*"Daily checked the system availability",*/
                         /*"Created reports and reported to manager",*/
-                        "Controlled branch software supplies",
-                        "Maintained branch proxy, domain controller and data servers",
-                        "Maintained branch Kerio WinRoute/Control security products",
-                        "Maintained branch LAN and provided user support"
+                        "Controlled software supplies of the branch office",
+                        "Maintained on campus proxy, domain controller and data servers and Kerio WinRoute/Control security products",
+                        "Administrated local network of the office"
                     ]
                 };
             }])
