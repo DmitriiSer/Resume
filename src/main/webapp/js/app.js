@@ -179,7 +179,10 @@ var app = angular.module("Resume", [])
                 };
                 $rootScope.downloadPDF = function () {
                     window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf", "_blank");
-                }
+                };
+                $rootScope.downloadDOCX = function () {
+                    window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.docx", "_blank");
+                };
             }])
         .controller("BadgeController", ["$rootScope", "$scope", "$timeout", function ($rootScope, $scope, $timeout) {
                 $scope.data = [
@@ -294,7 +297,7 @@ var app = angular.module("Resume", [])
                         /*"Daily checked the system availability",*/
                         /*"Created reports and reported to manager",*/
                         "Controlled software supplies of the branch office",
-                        "Maintained on campus proxy, domain controller and data servers and Kerio WinRoute/Control security products",
+                        "Maintained on-campus proxy, domain controller, data servers and Kerio WinRoute/Control security products",
                         "Administrated local network of the office"
                     ]
                 };
@@ -310,7 +313,7 @@ var app = angular.module("Resume", [])
                         title: "Lister",
                         link: "https://github.com/DmitriiSer/Lister",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, Java and is mobile-ready, natively looking, and backed by AngularJS, Ionic and Bootstrap frameworks",
+                        description: "Lister is an on-line organizer that is written in HTML5, CSS, JavaScript and Java. It is mobile-ready, native-looking, and backed by AngularJS, Ionic, and Bootstrap frameworks",
                         techs: {
                             langs: [
                                 {title: "HTML5"},
@@ -355,7 +358,7 @@ var app = angular.module("Resume", [])
                         title: "Foodnetwork Recipe to Cozi (Browser Extension)",
                         link: "https://github.com/DmitriiSer/WebProjects/tree/master/Chrome%20Extensions/Foodnetwork%20Recipe%20to%20Cozi%20Meals",
                         tooltip: "Go To GitHub Project Page",
-                        description: "Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork recipe page to Cozi Meals recipe by pressing a button in the popup window of the extension",
+                        description: "Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork to Cozi Meals by pressing a button in the pop-up window of the extension",
                         techs: {
                             langs: [
                                 {title: "HTML5"},

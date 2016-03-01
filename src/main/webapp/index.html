@@ -27,7 +27,8 @@
     <body>
         <div id="changeView" class="no-print" title1="Go to printable page view">
             <span ng-click="$root.changeView()">{{$root.goToViewTitle}}</span></br>
-            <a ng-click="$root.downloadPDF()" href="" style="color: #26b3f7">PDF-version</a>
+            <a ng-click="$root.downloadPDF()" href="" style="color: #26b3f7">PDF-version</a> 
+            <a ng-click="$root.downloadDOCX()" href="" style="color: rgb(201, 202, 178)">DOCX-version</a>
         </div>
         <div id="bodyContainer">
             <section class="heading">
@@ -48,13 +49,12 @@
             <section id="objective">
                 <div id="role">
                     <h3>Software Developer</h3>
-                    <p>A result-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.</p>
+                    <p>A performance-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.</p>
                 </div>
                 <div class="border-tb"><h3>Specialties</h3></div>
                 <div ng-controller="BadgeController" on-before-print="onBeforePrint()" on-after-print="onAfterPrint()">
                     <table id="table_badges"
                            class="no-print toggle-no-show">
-                           <!--ng-hide="$root.printable"-->
                         <tr ng-repeat="row in updateData()">
                             <td class="toggle-text-align"
                                 colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
@@ -84,7 +84,6 @@
                         </tr>
                     </table>
                     <table id="table_text" class="no-show toggle-no-show">
-                        <!--ng-show="$root.printable"-->
                         <tr ng-repeat="row in updateData()">
                             <td
                                 colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
@@ -137,7 +136,7 @@
                     </p>
                 </div>
                 <div>
-                    <h4>Certificates</h4>
+                    <h4>Certification</h4>
                     <h5>Oracle Certified Associate, Java SE 7 Programmer — Dec, 2014</h5>
                 </div>
                 <!--<footer-element class="page3 showOnlyWhenPrinting"></footer-element>-->
