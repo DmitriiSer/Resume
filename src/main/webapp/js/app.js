@@ -145,15 +145,16 @@ var app = angular.module("Resume", [])
                     return img;
                 };
                 $rootScope.printable = false;
-                $rootScope.updatePrintable = function () {
-                    return $rootScope.printable;
-                };
-                $rootScope.changeView = function () {
-                    $rootScope.printable = !$rootScope.printable;
-                    $(".toggle-no-show").toggleClass("no-show");
+                $rootScope.changeView = function (e) {
+                    if (e && e.target.tagName == "A")
+                        window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf", "_blank");
+                    else {
+                        $rootScope.printable = !$rootScope.printable;
+                        $(".toggle-no-show").toggleClass("no-show");
+                    }
                 };
             }])
-        .controller("BadgeController", ["$rootScope", "$scope", function ($rootScope, $scope) {
+        .controller("BadgeController", ["$rootScope", "$scope", "$timeout", function ($rootScope, $scope, $timeout) {
                 $scope.data = [
                     {
                         col: [
@@ -222,6 +223,14 @@ var app = angular.module("Resume", [])
                         ]
                     }
                 ];
+                $scope.tempData = $scope.data;
+                $scope.getData = function () {
+                    /*if ($scope.printable)
+                        return [];
+                    else*/
+                        return $scope.data;
+                    //console.log("$scope.data = %s", JSON.stringify($scope.data));
+                };
                 $scope.backgroundStyle = function (badge) {
                     if (badge.no_image) {
                         return "";
@@ -232,14 +241,15 @@ var app = angular.module("Resume", [])
                     }
                 };
                 $scope.onBeforePrint = function () {
-                    $rootScope.printable = true;
-                    $scope.$apply($rootScope.updatePrintable());
-                    console.log("onBeforePrint::$rootScope.printable = %s", $rootScope.printable);
+                    $timeout(function () {
+                        $rootScope.printable = true;                        
+                    });
                 };
                 $scope.onAfterPrint = function () {
-                    $rootScope.printable = false;
-                    $(".toggle-no-show").toggleClass("no-show", true);
-                    console.log("onBeforePrint::$rootScope.printable = %s", $rootScope.printable);
+                    $timeout(function () {
+                        $rootScope.printable = false;
+                        $(".toggle-no-show").toggleClass("no-show", true);
+                    });
                 };
             }])
         .controller("ExperienceController", ["$scope", function ($scope) {

@@ -25,9 +25,9 @@
         <noscript>Your browser does not support JavaScript!</noscript>
     </head>
     <body>
-        <div id="changeView" class="no-print" title1="Go to printable page view" ng-click="$root.changeView();">
+        <div id="changeView" class="no-print" title1="Go to printable page view" ng-click="$root.changeView($event);">
             <span>Go to printable page view</span></br>
-            <a href="https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf" style="color: #26b3f7">PDF-version</a>
+            <a href="" style="color: #26b3f7">PDF-version</a>
         </div>
         <div id="bodyContainer">
             <section class="heading">
@@ -51,44 +51,59 @@
                     <p>A result-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.</p>
                 </div>
                 <div class="border-tb"><h3>Specialties</h3></div>
-                <table ng-controller="BadgeController" on-before-print="onBeforePrint()" on-after-print="onAfterPrint()">
-                    <tr ng-repeat="row in data">
-                        <td colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
-                            width="{{item.width}}"
-                            ng-style="{'text-align': ($root.printable) ? 'left' : 'center'}"
-                            ng-repeat="item in row.col">
-                            <span ng-style="{'text-decoration': ($root.printable) ? 'underline' : 'none'}">{{item.name}}</span>:
-                            <!-- animated version -->
-                            <ul class="badge-container no-print"
-                                size="{{(item.size) ? item.size : 64}}"
-                                shape="{{(item.shape === undefined) ? '' : item.shape}}"
-                                ng-hide="$root.updatePrintable()">
-                                <li class="badge"
-                                    size="{{(badge.size) ? badge.size : (item.size) ? item.size : 64}}"
-                                    ng-repeat="badge in item.badges">
-                                    <a href="{{badge.href}}" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
-                                        <div class="background"                                             
-                                             style="{{backgroundStyle(badge)}}"
-                                             ng-hide="badge.no_image"></div>
-                                        <div class="inner">
-                                            <img ng-hide="badge.no_image" ng-src="{{$root.imageSrc(badge)}}"/>
-                                            <div ng-class="{center: badge.no_image}">{{badge.title}}</div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- printable version -->
-                            <ul class="angle-double-right toggle-no-show no-show">
-                                <!--ng-show="$root.updatePrintable()"-->
-                                <li ng-repeat="badge in item.badges">
-                                    <a href="{{badge.href}}" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
-                                        {{badge.title}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
+                <div ng-controller="BadgeController" on-before-print="onBeforePrint()" on-after-print="onAfterPrint()">
+                    <table id="badges"
+                           ng-hide="$root.printable">
+                        <!--style="background: red"-->
+                        <tr ng-repeat="row in getData()">
+                            <td class="toggle-text-align"
+                                colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
+                                width="{{item.width}}"
+                                ng-style="{'text-align': ($root.printable) ? 'left' : 'center'}"
+                                ng-repeat="item in row.col">
+                                <span style="text-decoration: none">{{item.name}}</span>:
+                                <!-- animated version -->
+                                <ul class="badge-container no-print"
+                                    size="{{(item.size) ? item.size : 64}}"
+                                    shape="{{(item.shape === undefined) ? '' : item.shape}}">
+                                    <li class="badge"
+                                        size="{{(badge.size) ? badge.size : (item.size) ? item.size : 64}}"
+                                        ng-repeat="badge in item.badges">
+                                        <a href="{{badge.href}}" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
+                                            <div class="background"                                             
+                                                 style="{{backgroundStyle(badge)}}"
+                                                 ng-hide="badge.no_image"></div>
+                                            <div class="inner">
+                                                <img ng-hide="badge.no_image" ng-src="{{$root.imageSrc(badge)}}"/>
+                                                <div ng-class="{center: badge.no_image}">{{badge.title}}</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="toggle-no-show no-show">
+                        <tr ng-repeat="row in data">
+                            <td
+                                colspan="{{(item.colspan != undefined) ? item.colspan : ''}}"
+                                width="{{item.width}}"
+                                style="text-align: left"
+                                ng-repeat="item in row.col">
+                                <span style="text-decoration: underline">{{item.name}}</span>:
+                                <!-- printable version -->
+                                <ul class="angle-double-right">
+                                    <!--ng-show="$root.printable"-->
+                                    <li ng-repeat="badge in item.badges">
+                                        <a href="{{badge.href}}" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
+                                            {{badge.title}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>                
             </section>
             <div class="page-break"></div>
             <!--objective-->
@@ -130,8 +145,7 @@
                     <ol id="project-list" class="normal"
                         reached-to-bottom="loadMoreProjects(1)"
                         ng-controller="ProjectsController">
-                        <li ng-repeat="project in filtered = (data| filter: query | limitTo : projectsToShow
-                                            )">
+                        <li ng-repeat="project in filtered = (data| filter: query | limitTo : projectsToShow)">
                             <h5 class="less-margin">{{project.title}}
                                 <span style="font-weight: normal" ng-show="project.link && project.tooltip">
                                     (<i><u><a href="{{project.link}}" title="{{project.tooltip}}">{{project.link}}</a></u></i>)
@@ -143,7 +157,7 @@
                                     <h6 ng-show="project.description">{{project.description}}</h6>
                                 </i>
                             </small>
-                            <small class="no-print" ng-hide="$root.updatePrintable()">
+                            <small class="no-print" ng-hide="$root.printable">
                                 <i>
                                     <div class="technologie"
                                          ng-repeat="techs in project.techs">
