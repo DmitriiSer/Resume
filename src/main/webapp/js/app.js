@@ -196,6 +196,7 @@ var app = angular.module("Resume", [])
                                     {title: "C++", href: "http://www.cplusplus.com/"},
                                     {title: "HTML5", href: "http://www.w3.org/html/"},
                                     {title: "CSS3", href: "http://www.w3.org/Style/CSS/"},
+                                    {title: "SASS", href: "http://sass-lang.com/"},
                                     {title: "JavaScript", href: "http://en.wikipedia.org/wiki/JavaScript"}
                                 ]
                             }
