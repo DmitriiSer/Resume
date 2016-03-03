@@ -212,6 +212,7 @@ var app = angular.module("Resume", [])
                                     {title: "AngularJS", href: "https://angularjs.org/"},
                                     {title: "Ionic", href: "http://ionicframework.com/"},
                                     {title: "jQuery", href: "https://jquery.com/"},
+                                    {title: "Bootstrap", href: "http://getbootstrap.com/", image: "/images/bootstrap.svg"},
                                     {title: "Velocity.js", href: "http://julian.com/research/velocity/", no_image: true}
                                 ]
                             }
@@ -248,6 +249,7 @@ var app = angular.module("Resume", [])
                                     {title: "Git", href: "https://git-scm.com/"},
                                     {title: "GitHub", href: "https://github.com/DmitriiSer/"},
                                     {title: "Bower", href: "http://bower.io/"},
+                                    {title: "Grunt", href: "http://gruntjs.com/"},
                                     {title: "Windows", href: "http://www.microsoft.com/windows/"},
                                     {title: "Mac OS X", href: "http://www.apple.com/osx/", image: "/images/macosx.png"},
                                     {title: "Linux", href: "https://en.wikipedia.org/wiki/Linux"}
@@ -327,7 +329,7 @@ var app = angular.module("Resume", [])
                             libs: [
                                 {title: "AngularJS"},
                                 {title: "Ionic"},
-                                {title: "Bootstrap"},
+                                {title: "Bootstrap", image: "/images/bootstrap.svg"},
                                 {title: "UI Bootstrap", no_image: true},
                                 {title: "Font Awesome", image: "/images/font_awesome.png"},
                                 {title: "Velocity.js", no_image: true},
