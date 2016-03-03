@@ -1,6 +1,4 @@
 @import url("http://fonts.googleapis.com/css?family=Droid+Serif:400,700|Arvo|Slabo+27px");
-@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
-@import url("http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css");
 .center-h {
   position: absolute;
   left: 50%;
@@ -35,23 +33,60 @@
 
 html, body {
   background-color: #D1DBBD;
-  background-image: url('/images/Hexagon-1.jpg?1451935035');
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
   margin: auto;
   font-family: "Arvo", serif;
   text-align: justify;
   color: #91AA9D; }
 
+#bodyBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('/images/Hexagon-1.jpg?1451935035');
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0; }
+
 #bodyContainer {
+  position: relative;
   width: 90%;
   margin: auto;
-  z-index: 0;
+  z-index: 900;
   -moz-box-shadow: #3E606F 0px 0px 10px 0px;
   -webkit-box-shadow: #3E606F 0px 0px 10px 0px;
   box-shadow: #3E606F 0px 0px 10px 0px; }
+
+#changeView {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /*width: 200px;
+  height: 20px;*/
+  padding: 1px 5px;
+  text-align: right;
+  background: #193441;
+  color: #FCFFF5;
+  border: 1px solid #D1DBBD;
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  /*border-left: $changeView_border_width solid transparent;
+  border-top: $changeView_border_width solid $c2;
+  border-right: $changeView_border_width solid $c4;
+  border-bottom: $changeView_border_width solid transparent;*/ }
+
+#changeView:hover {
+  /*width: 25px;
+  height: 25px;*/
+  border-top-color: #3E606F;
+  border-right-color: #D1DBBD; }
 
 canvas {
   position: fixed;
@@ -128,33 +163,6 @@ small > i {
 
 .page4 > section {
   margin: 0 -26px 8px -50px; }
-
-#changeView {
-  position: fixed;
-  top: 0;
-  right: 0;
-  /*width: 200px;
-  height: 20px;*/
-  padding: 1px 5px;
-  text-align: right;
-  background: #193441;
-  color: #FCFFF5;
-  border: 1px solid #D1DBBD;
-  border-top: none;
-  border-right: none;
-  border-bottom-left-radius: 5px;
-  cursor: pointer;
-  z-index: 1000;
-  /*border-left: $changeView_border_width solid transparent;
-  border-top: $changeView_border_width solid $c2;
-  border-right: $changeView_border_width solid $c4;
-  border-bottom: $changeView_border_width solid transparent;*/ }
-
-#changeView:hover {
-  /*width: 25px;
-  height: 25px;*/
-  border-top-color: #3E606F;
-  border-right-color: #D1DBBD; }
 
 section {
   font-family: "Arvo", serif;
@@ -285,8 +293,16 @@ ul.normal, ol.normal {
   list-style-type: none; }
 
 .angle-double-right li:before {
-  font-family: 'FontAwesome';
-  content: '\f101';
+  /*list-style-image: url("../images/arrow-right-double.png");*/
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  background-image: url('/images/../images/arrow-right-double.png?1457038731');
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  content: "";
   margin: 0 5px 0 -15px; }
 
 #project-list hr {

@@ -383,6 +383,7 @@ var app = angular.module("Resume", [])
                             langs: [
                                 {title: "HTML5"},
                                 {title: "CSS3"},
+                                {title: "SASS"},
                                 {title: "JavaScript"}
                             ],
                             libs: [
@@ -391,7 +392,7 @@ var app = angular.module("Resume", [])
                                 {title: "AngularJS"},
                                 {title: "Velocity.js", no_image: true},
                             ],
-                            ides: [{title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}],
+                            ides: [{title: "NetBeans"}, {title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}],
                         }
                     },
                     /*

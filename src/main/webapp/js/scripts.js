@@ -211,27 +211,6 @@ var EventHandlers = {
         // responsive table
         Helpers.responsiveTable($("table"));
     },
-    // changeView button click event handler
-    changeViewClickEventHandler: function (e) {
-        console.log("changeViewClickEventHandler");
-        return;
-        if (e && e.target.nodeName == "A")
-            return;
-        if ($("html").hasClass("print")) {
-            $("html").removeClass("print");
-            //$("#changeView").attr("title", "Go to printable page view");
-            $("#changeView").html("Go to printable page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
-        } else {
-            $("html").addClass("print");
-            //$("#changeView").attr("title", "Go to animated page view");
-            $("#changeView").html("Go to animated page view</br><a href='https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf' style='color: #26b3f7'>PDF-version</a>");
-        }
-        $(document).tooltip({
-            content: function () {
-                return $(this).attr("title");
-            }
-        });
-    },
     // badge mouse enter event handler
     badgeMouseEnter: function (e) {
         var animationDuration = "fast";
@@ -544,15 +523,11 @@ var Animation = {
 }
 // jQuery ready function
 $(function () {
-    // jQuery-UI tooltips activation
     //var projectsToShow = Infinity;
-    $(document).tooltip({track: true});
     // Attaching events
     $(window).load(EventHandlers.loadEventHandler);             // Window OnLoad event
     $(window).on("resize", EventHandlers.resizeEventHandler);   // Window resize event
     $("html").on("resize", EventHandlers.resizeEventHandler);   // HTML resize event
-    // click changeView button
-    //$("#changeView").on("click", EventHandlers.changeViewClickEventHandler); // changeView button click event handler
     // animate badges
     $(".badge").on("mouseenter", EventHandlers.badgeMouseEnter);// Badge mouse enter event
     $(".badge").on("mouseleave", EventHandlers.badgeMouseLeave);// Badge mouse leave event
