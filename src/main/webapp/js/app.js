@@ -227,7 +227,8 @@ var app = angular.module("Resume", [])
                                 badges: [
                                     {title: "NetBeans", href: "https://netbeans.org/"},
                                     {title: "Visual Studio", href: "https://www.visualstudio.com", image: "/images/visualstudio.png"},
-                                    {title: "Eclipse", href: "https://eclipse.org/"}
+                                    {title: "Eclipse", href: "https://eclipse.org/"},
+                                    {title: "Adobe Brackets", href: "http://brackets.io/", image: "/images/brackets.png"}
                                 ]
                             }
                         ]
@@ -246,6 +247,7 @@ var app = angular.module("Resume", [])
                                     {title: "SQL Server", href: "https://en.wikipedia.org/wiki/Microsoft_SQL_Server", image: "/images/mssql.png", tooltip: "Microsoft SQL Server"},
                                     {title: "Git", href: "https://git-scm.com/"},
                                     {title: "GitHub", href: "https://github.com/DmitriiSer/"},
+                                    {title: "Bower", href: "http://bower.io/"},
                                     {title: "Windows", href: "http://www.microsoft.com/windows/"},
                                     {title: "Mac OS X", href: "http://www.apple.com/osx/", image: "/images/macosx.png"},
                                     {title: "Linux", href: "https://en.wikipedia.org/wiki/Linux"}

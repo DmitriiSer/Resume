@@ -69,7 +69,7 @@
                                     <li class="badge"
                                         size="{{(badge.size) ? badge.size : (item.size) ? item.size : 64}}"
                                         ng-repeat="badge in item.badges">
-                                        <a href="{{badge.href}}" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
+                                        <a href="{{badge.href}}" target="_blank" title="{{(badge.tooltip === undefined) ? badge.title : badge.tooltip}}">
                                             <div class="background"                                             
                                                  style="{{backgroundStyle(badge)}}"
                                                  ng-hide="badge.no_image"></div>
