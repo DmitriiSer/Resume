@@ -178,10 +178,10 @@ var app = angular.module("Resume", [])
                     });
                 };
                 $rootScope.downloadPDF = function () {
-                    window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.pdf", "_blank");
+                    window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/dmitriiserikov.resume.pdf", "_blank");
                 };
                 $rootScope.downloadDOCX = function () {
-                    window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/Resume.docx", "_blank");
+                    window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/dmitriiserikov.resume.docx", "_blank");
                 };
             }])
         .controller("BadgeController", ["$rootScope", "$scope", "$timeout", function ($rootScope, $scope, $timeout) {
