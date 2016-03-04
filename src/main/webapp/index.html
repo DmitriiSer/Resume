@@ -2,6 +2,7 @@
 <html ng-app="Resume">
     <head>
         <!--meta-->
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -25,14 +26,28 @@
     </head>
     <body>
         <div id="bodyBackground"></div>        
-        <div id="changeView" class="no-print" title1="Go to printable page view">
-            <span ng-click="$root.changeView()">{{$root.goToViewTitle}}</span></br>
-            <a ng-click="$root.downloadPDF()" href="" style="color: #26b3f7">PDF-version</a> 
-            <a ng-click="$root.downloadDOCX()" href="" style="color: rgb(201, 202, 178)">Word(.docx)-version</a>
+        <div id="changeView" class="no-print" title1="Printable view">
+            <span ng-click="$root.changeView()">
+                <img src="images/print-preview.png"/>
+                <a>{{$root.goToViewTitle}}</a>
+            </span>
+            <span ng-click="$root.downloadPDF()">
+                <img src="images/pdf.ico"/>
+                <!--#26b3f7-->
+                <a href="" style="color: rgb(207, 61, 62)">PDF version</a>                
+            </span>
+            <span ng-click="$root.downloadDOCX()">
+                <img src="images/word-docx.png"/>
+                <!--rgb(201, 202, 178)-->
+                <a href="" style="color: rgb(34, 78, 156)">Word(docx) version</a>
+            </span>
         </div>        
         <div id="bodyContainer">
             <section class="heading">
-                <h1><a href="https://github.com/DmitriiSer/">Dmitrii Serikov</a></h1>
+                <div id="title">
+                    <img id="avatar" src="images/avatar.jpg" alt="My photo"/>
+                    <a href="https://github.com/DmitriiSer/"><h1>DMITRII SERIKOV</h1></a>
+                </div>                
                 <div class="info border-tb">
                     <ul class="horizontal">
                         <a href="https://www.google.com/maps/place/Medina+OH">
@@ -139,8 +154,7 @@
                     <h4>Certification</h4>
                     <h5>Oracle Certified Associate, Java SE 7 Programmer — Dec, 2014</h5>
                 </div>
-                <!--<footer-element class="page3 showOnlyWhenPrinting"></footer-element>-->
-                <footer-element class="page2 showOnlyWhenPrinting"></footer-element>
+                <footer-element class="page2 no-show"></footer-element>
                 <div class="border-b"></div>
                 <div id="projects">
                     <h4>Projects</h4>
@@ -148,7 +162,7 @@
                         reached-to-bottom="loadMoreProjects(1)"
                         ng-controller="ProjectsController">
                         <li ng-repeat="project in filtered = (data| filter: query | limitTo : projectsToShow
-                                )">
+                                        )">
                             <h5 class="less-margin">{{project.title}}
                                 <span style="font-weight: normal" ng-show="project.link && project.tooltip">
                                     (<i><u><a href="{{project.link}}" title="{{project.tooltip}}">{{project.link}}</a></u></i>)
@@ -162,15 +176,15 @@
                             </small>
                             <small class="no-print" ng-hide="$root.printable">
                                 <i>
-                                    <div class="technologie"
+                                    <div class="technology"
                                          ng-repeat="techs in project.techs">
-                                        <div class="technologie-title-span"
+                                        <div class="technology-title-span"
                                              ng-show="techs.length > 0"><u>{{techTitles[$index]}}:</u></div>
-                                        <span class="technologie-span"
+                                        <span class="technology-span"
                                               ng-class="{first:$first}"
                                               style="padding-left: {{(tech.no_image) ? '10' : '0'}}px"
                                               ng-repeat="tech in techs">
-                                            <img class="technologie-badge"
+                                            <img class="technology-badge"
                                                  title="{{tech.title}}"
                                                  ng-src="{{$root.imageSrc(tech)}}"
                                                  ng-hide="{{tech.no_image}}"/>
@@ -181,11 +195,6 @@
                                 </i>
                             </small>
                             <hr ng-show="$index < filtered.length - 1">
-                            <div style="position: relative">
-                                <!--<div class="page-break" ng-show="($index + 1) % 4 == 0"></div>
-                                <footer-element class="page4 showOnlyWhenPrinting"
-                                                ng-show="($index + 1) % 4 == 0"></footer-element>-->
-                            </div>
                         </li>
                     </ol>
                 </div>

@@ -1,6 +1,8 @@
 //fonts
-$fontHeaders: 'Droid Serif', serif;
-$fontPrimary: 'Arvo', serif;
+//$fontHeaders: 'Droid Serif', serif;
+$fontHeaders: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+//$fontPrimary: "Arvo", serif;
+$fontPrimary: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 $fontSecondary: 'Slabo 27px', serif;
 //colors
 //palette
@@ -16,7 +18,8 @@ $backgroundColor: $c5;//#faead6;
 $headerBackgroundColor: darken($backgroundColor, 15);
 //text colors
 $textColor: $c3;//#333;
-$textShadowColor: /*$c1;*/ darken($textColor, 10);
+//$textShadowColor: /*$c1;*/ darken($textColor, 10);
+$textShadowColor: darken($textColor, 20);
 //element colors
 $borderColor: $textShadowColor;
 $listItemHoverColor: rgba(166, 214, 230, 0.3);

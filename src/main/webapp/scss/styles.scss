@@ -58,8 +58,18 @@ html, body {
     /*width: 200px;
     height: 20px;*/
     padding: 1px 5px;
-    text-align: right;
+    //text-align: right;
     background: $c5;
+    /*
+    rgb(66, 89, 134)    magenta
+    rgb(77, 112, 153)
+    rgb(99, 117, 136)
+    rgb(80, 156, 179) 
+    */
+    //@include background(linear-gradient(to bottom, rgb(99, 117, 136),  $c2));
+    @include background(linear-gradient(to bottom, lighten($c5, 10), $c2, darken($c2, 15), $c2));
+    //rgb(121, 197, 220)
+    @include box-shadow(-2px 0px $badge-shadow-size $c4, 2px 2px $badge-shadow-size $c4);
     color: $c1;
     border: 1px solid $c2; 
     border-top: none;
@@ -67,10 +77,6 @@ html, body {
     border-bottom-left-radius: 5px;
     cursor: pointer;    
     z-index: 1000;        
-    /*border-left: $changeView_border_width solid transparent;
-    border-top: $changeView_border_width solid $c2;
-    border-right: $changeView_border_width solid $c4;
-    border-bottom: $changeView_border_width solid transparent;*/
 }
 #changeView:hover {
     $changeView_border_width: 25px / 2.5;
@@ -78,6 +84,14 @@ html, body {
     height: 25px;*/
     border-top-color: $c4;
     border-right-color: $c2;
+}
+#changeView img {
+    display: none;
+    width: 32px;
+    margin: 10px auto;
+}
+#changeView a {
+    //@include text-shadow(1px 1px 0px #999);
 }
 // canvas
 canvas { 
@@ -96,10 +110,11 @@ canvas {
     font-family: $fontHeaders;
     font-weight: 700;
     letter-spacing: 0.4rem;
-    @include text-shadow(1px 1px 0px rgba($textShadowColor, 0.4), -1px -1px 0px rgba(black, 0.6));
+    //@include text-shadow(1px 1px 0px rgba($textShadowColor, 0.4), -1px -1px 0px rgba(black, 0.6));
+    @include text-shadow(1px 1px 1px rgba($textShadowColor, 1));
     word-wrap: break-word;
 }
-h1 { margin: 1rem 0.5rem; }
+h1 { margin: 2rem 1rem 0.5rem; }
 #{headings(2,6)} { letter-spacing: 2px; }
 #{headings(1,3)} { text-align: center; }
 #{headings(4,6)} { text-align: left; }
@@ -148,7 +163,33 @@ section {
     lighten($headerBackgroundColor, 20),
     $headerBackgroundColor));
 }
+#title {
+    display: inline-block;
+    width: calc(100% + 20px);
+    margin: -1px -10px -5px;
+}
+#avatar {
+    //border-radius: 100%;
+    display: inline-block;
+    position: absolute;
+    width: 82px;
+    //height: calc(100px);    
+    -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 80% 80%);
+    clip-path: polygon(0 100%, 0 0, 100% 0, 80% 80%);
+}
+#title h1 {
+    display: inline-block;
+    width: 100%;
+    margin: 2rem 0 1rem;
+    padding-left: 82px;
+    font-size: 30px;
+}
+.fa.fa-certificate:before {
+    font-style: normal;
+    content: "\2739";
+}
 .info {
+    clear: both;
     margin: auto;
     text-align: center;
     overflow: hidden;
@@ -192,6 +233,7 @@ section {
 #experience {
     /*@include background(linear-gradient(to bottom, $headerBackgroundColor, $c2, $c5));*/
     background-color: $c2;
+    padding-top: 0px;
     /*@include background(linear-gradient(to bottom, $c4, $c2, $c2));*/
     /*
     rgb(66, 89, 134)    magenta
@@ -213,30 +255,31 @@ section {
     /*@include box-shadow($c4 0px 5px 5px 0px inset);*/
     color: $c5;
 }
-.technologie {
+.technology {
     /*height: 24px;
     margin: 3px 0;*/
     text-align: left;
 }
-.technologie-title-span {
+.technology-title-span {
     display: inline-block;
     height: 24px;
     vertical-align: middle;
     /*margin-right: 10px;*/
 }
-.technologie-span.first {
+.technology-span.first {
     margin-left: 10px;
 }
-.technologie-span {
+.technology-span {
     display: inline-block;
     height: 24px;
     margin-right: 5px;
     padding-right: 10px;
     border: 1px solid $c5;
     border-radius: 24px;
+    @include box-shadow(inset 0px 0px $badge-shadow-size rgba($c5, 0.5));
     overflow: hidden;
 }
-.technologie-badge {    
+.technology-badge {    
     width: 24px;
     vertical-align: middle;
 }
@@ -261,14 +304,13 @@ ul.normal, ol.normal {
     list-style-type: none;
 }
 .angle-double-right li:before {
-    /*list-style-image: url("../images/arrow-right-double.png");*/
     display: inline-block;
     width: 0.9em;
     height: 0.9em;
     @include background-image(image-url("../images/arrow-right-double.png"));
     @include background-size(cover);
     content: "";
-    margin: 0 5px 0 -15px;
+    margin: 0 5px 0 -20px;
 }
 #project-list hr {
     margin: 0;
@@ -361,7 +403,13 @@ table {
         /*border: none;
         outline: none;*/
     }
-    .badge, .technologie-badge {
+    #avatar { display: none; }
+    .heading h1 {
+        width: 100%;
+        margin: 2rem 0 0.5rem;
+        float: none;
+    }
+    .badge, .technology-badge {
         @include box-shadow();
         @include filter(grayscale(100%));
         .background { display: none }
@@ -372,17 +420,51 @@ table {
         .background { display: block }
     }
 }
-@media screen {
-    .showOnlyWhenPrinting {
-        display: none;
+@media only screen and (max-width: 250px) {
+    
+}
+@media only screen and (max-width: 479px) {
+    #bodyContainer { width: 100%; margin: 0; }
+    #changeView img { display: block; width: 24px; margin: 5px auto;}
+    #changeView a { display: none; }
+    /*#changeView { width: 32px; }*/
+    #avatar { 
+        position: relative;
+        width: 20%;
+        float: left;
+    }
+    #title h1 {
+        width: 80%;
+        margin: 6% 0 1rem;
+        padding-left: 0;
     }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    #changeView img { display: block; }
+    #changeView a { display: none; }
     #bodyContainer { width: 90%; }   
+    #title h1 { padding-left: 82px; margin-bottom: 1rem; }
 }
+/* for changeView area only */
+@media only screen and (min-width: 450px) and (max-width: 520px) {
+    #changeView { padding: 0 2px;}
+    #changeView img { width: 24px; }
+}
+/****************************/
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    #changeView img { display: block; }
+    #changeView a { display: none; }
     #bodyContainer { width: 80%; }
+    #title h1 { padding-left: 82px; margin-bottom: 1rem; }
 }
+/* for changeView area only */
+@media only screen and (min-width: 1024px) {
+    #changeView { padding: 0 5px; }
+    #changeView span { display: block; margin: 5px auto; }
+    #changeView img { display: inline-block; width: 24px; margin: 0; }
+    #changeView a { vertical-align: super; }
+}
+/****************************/
 @media only screen and (min-width: 1024px) and (max-width: 1679px) {
     #bodyContainer { width: 70%; }
 }

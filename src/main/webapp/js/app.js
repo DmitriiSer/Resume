@@ -145,14 +145,14 @@ var app = angular.module("Resume", [])
                     return img;
                 };
                 $rootScope.printable = false;
-                $rootScope.goToViewTitle = "Go to printable page view";
+                $rootScope.goToViewTitle = "Printable view";
                 $rootScope.changeView = function () {
                     //$rootScope.printable = !$rootScope.printable;
                     //
                     //$(".toggle-no-show").toggleClass("no-show");
                     var tb = $("#table_badges");
                     var tt = $("#table_text");
-                    if ($rootScope.goToViewTitle == "Go to printable page view") {
+                    if ($rootScope.goToViewTitle == "Printable view") {
                         $rootScope.printable = true;
                         tb.addClass("no-show");
                         tt.removeClass("no-show");
@@ -165,17 +165,12 @@ var app = angular.module("Resume", [])
                     if ($("html").hasClass("print")) {
                         $("html").removeClass("print");
                         $rootScope.printable = false;
-                        $rootScope.goToViewTitle = "Go to printable page view";
+                        $rootScope.goToViewTitle = "Printable view";
                     } else {
                         $("html").addClass("print");
                         $rootScope.printable = true;
-                        $rootScope.goToViewTitle = "Go to animated page view";
+                        $rootScope.goToViewTitle = "Animated view";
                     }
-                    $(document).tooltip({
-                        content: function () {
-                            return $(this).attr("title");
-                        }
-                    });
                 };
                 $rootScope.downloadPDF = function () {
                     window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/dmitriiserikov.resume.pdf", "_blank");
@@ -244,12 +239,14 @@ var app = angular.module("Resume", [])
                                 badges: [
                                     {title: "OOP", href: "http://en.wikipedia.org/wiki/Object-oriented_programming", tooltip: "Object Oriented Principles", no_image: true},
                                     {title: "Design Patterns", href: "https://en.wikipedia.org/wiki/Software_design_pattern", no_image: true},
-                                    {title: "MySQL", href: "https://www.mysql.com"},
-                                    {title: "SQL Server", href: "https://en.wikipedia.org/wiki/Microsoft_SQL_Server", image: "/images/mssql.png", tooltip: "Microsoft SQL Server"},
                                     {title: "Git", href: "https://git-scm.com/"},
                                     {title: "GitHub", href: "https://github.com/DmitriiSer/"},
                                     {title: "Bower", href: "http://bower.io/"},
                                     {title: "Grunt", href: "http://gruntjs.com/"},
+                                    {title: "Compass", href: "http://compass-style.org/"},
+                                    {title: "MySQL", href: "https://www.mysql.com"},
+                                    {title: "SQL Server", href: "https://en.wikipedia.org/wiki/Microsoft_SQL_Server", image: "/images/mssql.png", tooltip: "Microsoft SQL Server"},
+                                    {title: "Apache Tomcat", href: "http://tomcat.apache.org/", image: "/images/tomcat.png"},
                                     {title: "Windows", href: "http://www.microsoft.com/windows/"},
                                     {title: "Mac OS X", href: "http://www.apple.com/osx/", image: "/images/macosx.png"},
                                     {title: "Linux", href: "https://en.wikipedia.org/wiki/Linux"}
@@ -283,7 +280,7 @@ var app = angular.module("Resume", [])
                             tb.removeClass("no-show");
                         if (!tt.hasClass("no-show"))
                             tt.addClass("no-show");
-                        $rootScope.goToViewTitle = "Go to printable page view";
+                        $rootScope.goToViewTitle = "Printable view";
                         //$(".toggle-no-show").toggleClass("no-show");
                         $rootScope.printable = false;
                     });
@@ -387,9 +384,8 @@ var app = angular.module("Resume", [])
                                 {title: "JavaScript"}
                             ],
                             libs: [
-                                {title: "jQuery"},
-                                {title: "jQuery-UI"},
                                 {title: "AngularJS"},
+                                {title: "jQuery"},
                                 {title: "Velocity.js", no_image: true},
                             ],
                             ides: [{title: "NetBeans"}, {title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}],

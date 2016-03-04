@@ -533,14 +533,14 @@ $(function () {
     $(".badge").on("mouseleave", EventHandlers.badgeMouseLeave);// Badge mouse leave event
     // attach print event handlers
     /*if (window.matchMedia) {
-        var mediaQueryList = window.matchMedia('print');
-        mediaQueryList.addListener(function (mql) {
-            if (mql.matches)
-                EventHandlers.beforePrinting();
-            else
-                EventHandlers.afterPrinting();
-        });
-    }*/
+     var mediaQueryList = window.matchMedia('print');
+     mediaQueryList.addListener(function (mql) {
+     if (mql.matches)
+     EventHandlers.beforePrinting();
+     else
+     EventHandlers.afterPrinting();
+     });
+     }*/
     //window.onbeforeprint = EventHandlers.beforePrinting;
     //window.onafterprint = EventHandlers.afterPrinting;
 });
