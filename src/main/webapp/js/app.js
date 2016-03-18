@@ -1,7 +1,8 @@
 (function () {
     "use strict";
-    /*global angular*/
-    var app = angular.module("Resume", [])
+    /*jslint white: true, todo: true, plusplus: true */
+    /*global window, console, $, angular*/
+    angular.module("Resume", [])
             .directive("footerElement", function () {
                 return {
                     restrict: "E",
@@ -19,22 +20,21 @@
                         }
                     };
                 }])
-            .directive("onBeforePrint", ["$window", "$rootScope", "$timeout", function onBeforePrint($window, $rootScope, $timeout) {
-                    var beforePrintDirty = false;
-                    var listeners = [];
-                    var beforePrint = function () {
+            .directive("onBeforePrint", ["$window", "$rootScope", "$timeout", function BeforePrint($window, $rootScope, $timeout) {
+                    var beforePrintDirty = false, listeners = [], mediaQueryList, beforePrint, currentElement, i, len;
+                    beforePrint = function () {
                         if (beforePrintDirty) {
                             return;
                         }
                         beforePrintDirty = true;
                         if (listeners) {
-                            for (var i = 0, len = listeners.length; i < len; i++) {
+                            for (i = 0, len = listeners.length; i < len; i++) {
                                 listeners[i].triggerHandler("beforePrint");
                             }
                             var scopePhase = $rootScope.$$phase;
 
                             // This must be synchronious so we call digest here.
-                            if (scopePhase != "$apply" && scopePhase != "$digest") {
+                            if (scopePhase !== "$apply" && scopePhase !== "$digest") {
                                 $rootScope.$digest();
                             }
                         }
@@ -44,10 +44,11 @@
                         }, 100, false);
                     };
                     if ($window.matchMedia) {
-                        var mediaQueryList = $window.matchMedia("print");
+                        mediaQueryList = $window.matchMedia("print");
                         mediaQueryList.addListener(function (mql) {
-                            if (mql.matches)
+                            if (mql.matches) {
                                 beforePrint();
+                            }
                         });
                     }
                     $window.onbeforeprint = beforePrint;
@@ -63,8 +64,8 @@
                         scope.$on("$destroy", function () {
                             element.off("beforePrint", onBeforePrint);
                             var pos = -1;
-                            for (var i = 0, len = listeners.length; i < len; i++) {
-                                var currentElement = listeners[i];
+                            for (i = 0, len = listeners.length; i < len; i++) {
+                                currentElement = listeners[i];
                                 if (currentElement === element) {
                                     pos = i;
                                     break;
@@ -76,20 +77,20 @@
                         });
                     };
                 }])
-            .directive("onAfterPrint", ["$window", "$rootScope", "$timeout", function onAfterPrint($window, $rootScope, $timeout) {
-                    var afterPrintDirty = false;
-                    var listeners = [];
-                    var afterPrint = function () {
-                        if (afterPrintDirty)
+            .directive("onAfterPrint", ["$window", "$rootScope", "$timeout", function AfterPrint($window, $rootScope, $timeout) {
+                    var afterPrintDirty = false, listeners = [], mediaQueryList, afterPrint, currentElement, i, len;
+                    afterPrint = function () {
+                        if (afterPrintDirty) {
                             return;
+                        }
                         afterPrintDirty = true;
                         if (listeners) {
-                            for (var i = 0, len = listeners.length; i < len; i++) {
+                            for (i = 0, len = listeners.length; i < len; i++) {
                                 listeners[i].triggerHandler("afterPrint");
                             }
                             var scopePhase = $rootScope.$$phase;
                             // This must be synchronious so we call digest here.
-                            if (scopePhase != "$apply" && scopePhase != "$digest") {
+                            if (scopePhase !== "$apply" && scopePhase !== "$digest") {
                                 $rootScope.$digest();
                             }
                         }
@@ -99,10 +100,11 @@
                         }, 100, false);
                     };
                     if ($window.matchMedia) {
-                        var mediaQueryList = $window.matchMedia("print");
+                        mediaQueryList = $window.matchMedia("print");
                         mediaQueryList.addListener(function (mql) {
-                            if (!mql.matches)
+                            if (!mql.matches) {
                                 afterPrint();
+                            }
                         });
                     }
                     $window.onafterprint = afterPrint;
@@ -121,8 +123,8 @@
                         scope.$on("$destroy", function () {
                             element.off("afterPrint", onAfterPrint);
                             var pos = -1;
-                            for (var i = 0, len = listeners.length; i < len; i++) {
-                                var currentElement = listeners[i];
+                            for (i = 0, len = listeners.length; i < len; i++) {
+                                currentElement = listeners[i];
                                 if (currentElement === element) {
                                     pos = i;
                                     break;
@@ -134,7 +136,7 @@
                         });
                     };
                 }])
-            .run(["$rootScope", "$timeout", function ($rootScope, $timeout) {
+            .run(["$rootScope", function ($rootScope) {
                     $rootScope.imageSrc = function (obj) {
                         var img;
                         if (obj && obj.no_image) {
@@ -154,9 +156,8 @@
                         //$rootScope.printable = !$rootScope.printable;
                         //
                         //$(".toggle-no-show").toggleClass("no-show");
-                        var tb = $("#table_badges");
-                        var tt = $("#table_text");
-                        if ($rootScope.goToViewTitle == "Printable view") {
+                        var tb = $("#table_badges"), tt = $("#table_text");
+                        if ($rootScope.goToViewTitle === "Printable view") {
                             $rootScope.printable = true;
                             tb.addClass("no-show");
                             tt.removeClass("no-show");
@@ -183,7 +184,7 @@
                         window.open("https://github.com/DmitriiSer/Resume/raw/master/docs/dmitriiserikov.resume.docx", "_blank");
                     };
                 }])
-            .controller("BadgeController", ["$rootScope", "$scope", "$timeout", function ($rootScope, $scope, $timeout) {
+            .controller("BadgeController", ["$rootScope", "$scope", function ($rootScope, $scope) {
                     $scope.data = [
                         {
                             col: [
@@ -261,15 +262,13 @@
                     ];
                     $scope.updateData = function () {
                         return $scope.data;
-                    }
+                    };
                     $scope.backgroundStyle = function (badge) {
                         if (badge.no_image) {
                             return "";
                         }
-                        else {
-                            var img = (badge.image === undefined) ? 'images/' + badge.title.toLowerCase() + '.png' : badge.image;
-                            return "background-image: url(" + img + ")";
-                        }
+                        var img = (badge.image === undefined) ? 'images/' + badge.title.toLowerCase() + '.png' : badge.image;
+                        return "background-image: url(" + img + ")";
                     };
                     $scope.onBeforePrint = function () {
                         $scope.$apply(function () {
@@ -278,12 +277,13 @@
                     };
                     $scope.onAfterPrint = function () {
                         $scope.$apply(function () {
-                            var tb = $("#table_badges");
-                            var tt = $("#table_text");
-                            if (tb.hasClass("no-show"))
+                            var tb = $("#table_badges"), tt = $("#table_text");
+                            if (tb.hasClass("no-show")) {
                                 tb.removeClass("no-show");
-                            if (!tt.hasClass("no-show"))
+                            }
+                            if (!tt.hasClass("no-show")) {
                                 tt.addClass("no-show");
+                            }
                             $rootScope.goToViewTitle = "Printable view";
                             //$(".toggle-no-show").toggleClass("no-show");
                             $rootScope.printable = false;
@@ -308,7 +308,7 @@
                         ]
                     };
                 }])
-            .controller("ProjectsController", ["$rootScope", "$scope", function ($rootScope, $scope) {
+            .controller("ProjectsController", ["$scope", function ($scope) {
                     $scope.projectsToShow = Infinity;
                     $scope.loadMoreProjects = function (howMany) {
                         $scope.projectsToShow += howMany;
@@ -355,7 +355,7 @@
                                 libs: [
                                     {title: "jQuery"},
                                     {title: "jQuery-UI"},
-                                    {title: "Velocity.js", no_image: true},
+                                    {title: "Velocity.js", no_image: true}
                                 ],
                                 ides: [{title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}]
                             }
@@ -390,11 +390,11 @@
                                 libs: [
                                     {title: "AngularJS"},
                                     {title: "jQuery"},
-                                    {title: "Velocity.js", no_image: true},
+                                    {title: "Velocity.js", no_image: true}
                                 ],
-                                ides: [{title: "NetBeans"}, {title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}],
+                                ides: [{title: "NetBeans"}, {title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}]
                             }
-                        },
+                        }
                         /*
                          {
                          title: "CheapFly",
