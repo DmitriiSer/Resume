@@ -1,0 +1,74 @@
+﻿Dmitrii Serikov
+3929 Barrington Dr., Medina, OH 44256	(216) 970-9071	dmitrii.serikov@gmail.com
+
+ABOUT ME
+A performance-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.
+
+Skills:
+Languages:
+ - Java
+ - C++
+ - HTML5
+ - CSS3
+ - SASS
+ - JavaScript
+
+Frameworks & Libraries:
+ - AngularJS
+ - Ionic Framework
+ - jQuery
+ - Bootstrap
+ - Velocity.js
+
+IDEs:
+ - NetBeans
+ - Visual Studio
+ - Eclipse
+ - Adobe Brackets
+
+Familiar with:
+ - OOP
+ - Design Patterns
+ - Git
+ - GitHub
+ - Bower
+ - Grunt
+ - Compass
+ - MySQL
+ - Microsoft SQL Server
+ - Apache Tomcat
+ - Windows
+ - Mac OS X
+ - Linux
+
+Certification:
+ - Oracle Certified Associate, Java SE 7 Programmer — December 2014
+
+Education:
+The Bonch-Bruevich Saint-Petersburg State University of Telecommunications Saint-Petersburg, Russia
+(September 2004 to July 2009)
+Specialist Degree / B.S. Computer Science
+
+Employment:
+Infrastructure Team Leader
+Engineering Centre "ENERGOAUDITCONTROL", LLC, Saint-Petersburg, Russia
+(September 2009 to May 2015)
+ - Controlled a small team of specialists to provide trouble-free operation of customers' retail servers
+ - Created plans and schedules to maintain customers' servers
+ - Organized emergency server maintenance
+ - Controlled software supplies of the branch office
+ - Maintained on-campus proxy, domain controller, data servers and Kerio WinRoute/Control security products
+ - Administrated local network of the office	
+	
+Projects:
+ 1) Lister (October 2015 to Present) / https://github.com/DmitriiSer/Lister
+ - Lister is an on-line organizer that is written in HTML5, CSS, JavaScript, and Java. It is mobile-ready, native-looking, and backed by AngularJS, Ionic, and Bootstrap frameworks
+
+ 2) Advanced Carousel (March 2015 to May 2015) / https://github.com/DmitriiSer/WebProjects/tree/master/AdvancedCarousel
+ - Representation of a HTML image carousel
+
+ 3) FoodNetwork Recipe To Cozi (Browser Extension) (July 2015) / https://github.com/DmitriiSer/WebProjects/tree/master/Chrome%20Extensions/Foodnetwork%20Recipe%20to%20Cozi%20Meals
+ - Chrome/Opera extension that allows you to transfer the whole recipe from Foodnetwork to Cozi Meals by pressing a button in the pop-up window of the extension
+
+ 4) Resume (June 2015 to Present) / https://github.com/DmitriiSer/Resume
+ - Web-based animated version of this resume
