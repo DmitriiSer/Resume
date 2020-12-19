@@ -1,6 +1,9 @@
-# Resume
-### Version: 0.7
-Resume is a project that represents my own resume. It is built with such technologies as jQuery, AngularJS and Velocity.js.
+# Resume ![Version](https://img.shields.io/github/package-json/v/dmitriiser/resume)
+
+Resume is a project that represents my own resume. It is built with the following technologies:
+- jQuery
+- AngularJS
+- Velocity.js
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
 
