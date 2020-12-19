@@ -5,11 +5,7 @@ export class ThemeService {
 
   colorsFound = false;
 
-  private colors: {
-    primary: string;
-    accent: string;
-    [color: string]: string;
-  } = {};
+  private colors: { [color: string]: string; } = {};
 
   constructor() { }
 
@@ -20,7 +16,7 @@ export class ThemeService {
     if (Object.keys(this.colors).length === 0) {
       this.findColors();
     }
-    return this.colors;
+    return this.colors as any;
   }
 
   getPrimaryColor(): string {
