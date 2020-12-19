@@ -1,0 +1,13 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar:before {
+  $size: 20px;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: $size solid white;
+  border-right: $size solid transparent;
+}
