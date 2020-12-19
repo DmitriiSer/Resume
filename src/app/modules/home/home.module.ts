@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HomeComponent } from './home.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { HomeComponent } from './home.component';
     // Material
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatRippleModule
   ],
   declarations: [HomeComponent],
   exports: [HomeComponent]

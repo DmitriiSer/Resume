@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-    </button>
+
+    <!-- Avatar button -->
+    <div #avatarBtn matRipple [matRippleColor]="rippleColor" class="avatar-btn" (click)="avatarClick()"></div>
 
     <!-- Title -->
     <span>{{title}}</span>
