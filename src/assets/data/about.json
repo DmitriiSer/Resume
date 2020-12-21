@@ -1,3 +1,17 @@
 {
-    "fullname": "Dmitrii Serikov"
+    "fullname": "Dmitrii Serikov",
+    "address": "",
+    "title": "Software Developer",
+    "aboutMe": "A performance-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.",
+    "skills": [
+        "Java",
+        "C++",
+        "HTML5",
+        "CSS3",
+        "SASS",
+        "JavaScript",
+        "Angular",
+        "Bootstrap",
+        "Angular Material"
+    ]
 }
