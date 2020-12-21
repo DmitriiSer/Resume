@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ThemeService } from 'src/app/shared/theme.service';
 
 @Component({
@@ -8,14 +9,16 @@ import { ThemeService } from 'src/app/shared/theme.service';
 })
 export class NavbarComponent implements OnInit {
 
-  title = 'Dmitrii Serikov';
+  @Input() title = '';
 
   rippleColor = this.theme.getPrimaryColor() + 'bb';
   avatarHover = false;
 
+  // TODO: get links using API call
   links = ['Projects', 'About'];
 
   constructor(
+    private router: Router,
     private theme: ThemeService
   ) { }
 
@@ -30,11 +33,11 @@ export class NavbarComponent implements OnInit {
     } else {
       this.rippleColor = primary;
     }
-    console.log(`avatarClick, rippleColor = ${this.rippleColor}`);
+    this.router.navigate(['/']);
   }
 
   linkClick(link: string): void {
-    console.log(`linkClick = ${link}`);
+    this.router.navigate([link.toLocaleLowerCase()]);
   }
 
 }
