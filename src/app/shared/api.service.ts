@@ -9,12 +9,13 @@ import { shareReplay } from 'rxjs/operators';
 
 import { AboutData } from './models/about-data';
 import { BASE_API_PATH } from './models/base-api-path';
+import { PagesData } from './models/pages-data';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
 
-  apiPathMap = {
-    about: '/assets/data/'
+  private apiPathMap: { [key: string]: string } = {
+    subpath: '/assets/data/',
   };
 
   constructor(
@@ -24,13 +25,27 @@ export class ApiService {
     this.basePath = basePath ? basePath : '';
   }
 
-  readAbout(): Observable<AboutData> {
-    const key = 'about';
-    let url = this.basePath + this.apiPathMap[key] + key + '.json';
-    return this.http.get<AboutData>(url)
-      .pipe(
-        shareReplay({ bufferSize: 1, refCount: true }),
-      );
+  /**
+   * Retrieve a list of available pages
+   */
+  getPages(): Observable<Array<PagesData>> {
+    return this.http.get<Array<PagesData>>(this.getUrl('pages'))
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+  }
+
+
+  /**
+   * Retrieve details about myself
+   */
+  getAbout(): Observable<AboutData> {
+    return this.http.get<AboutData>(this.getUrl('about'))
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+  }
+
+  private getUrl(key: string): string {
+    const subpath = this.apiPathMap['subpath'];
+    return subpath !== undefined ?
+      `${this.basePath}${subpath}${key}.json` : '';
   }
 
 }
