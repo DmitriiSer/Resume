@@ -1,17 +1,20 @@
 {
-    "fullname": "Dmitrii Serikov",
-    "address": "",
-    "title": "Software Developer",
-    "aboutMe": "A performance-driven Software Developer with a solid understanding of the Object Oriented Principles who can work on a problem and solve it. Always learning new technologies and concepts and trying to experiment with them.",
+    "fullname": "Jon Snow",
+    "avatar": "https://avatarfiles.alphacoders.com/183/183446.jpg",
+    "address": "1234 West Rd., San Francisco, CA 12345",
+    "phone": "(123) 456-7890",
+    "email": "email@email.com",
+    "sites": {
+        "portfolio": "https://www.site.com",
+        "linkedIn": "https://www.linkedin.com/jonsnow"
+    },
+    "title": "King in The North",
+    "aboutMe": "I am a 14-year-old illegitimate son of Eddard \"Ned\" Stark, Lord of Winterfell, and half-brother to Robb, Sansa, Arya, Bran and Rickon. I'm having strong Stark features with a lean build, long face, dark brown hair and dark grey eyes.",
     "skills": [
-        "Java",
-        "C++",
-        "HTML5",
-        "CSS3",
-        "SASS",
-        "JavaScript",
-        "Angular",
-        "Bootstrap",
-        "Angular Material"
+        "Swordsmanship",
+        "Political and strategic mind",
+        "Charisma",
+        "Minor skinchanging abilities",
+        "Leadership skills"
     ]
 }

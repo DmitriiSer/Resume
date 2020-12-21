@@ -1,6 +1,12 @@
 export interface AboutData {
     fullname: string;
-    address: string;
+    avatar: string;
+    address: string
+    phone: string;
+    email: string;
+    sites: {
+        [sitename: string]: string;
+    };
     title: string;
     aboutMe: string;
     skills: Array<string>;

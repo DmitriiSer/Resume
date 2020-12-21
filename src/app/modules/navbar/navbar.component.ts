@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
   @Input() title = '';
 
   rippleColor = this.theme.getPrimaryColor() + 'bb';
+
+  avatar = '';
   avatarHover = false;
 
   links: Array<string> = [];
@@ -36,6 +38,9 @@ export class NavbarComponent implements OnInit {
 
       // set navbar title      
       this.title = about.fullname;
+
+      // set avatar
+      this.avatar = about.avatar;
 
       // generate page links      
       this.links = pages.map(v => v.title);
