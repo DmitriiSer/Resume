@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build && npm run server",
+    "start": "npm run build:old && npm run build && npm run server",
     "server": "node server",
     "build": "ng build",
     "build:stats": "ng build --prod --stats-json",
-    "build:old": "node-sass ./webapp/scss/styles.scss ./webapp/css1/styles.css --map styles.css.map",
+    "build:old": "node-sass ./webapp/scss/styles.scss ./webapp/css/styles.css --source-map true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
