@@ -9,7 +9,10 @@ import { ThemeService } from 'src/app/shared/theme.service';
 export class HomeComponent implements OnInit {
 
   title = 'Home';
-  rippleColor = '';
+  rippleColor = this.theme.getPrimaryColor() + 'bb';
+  avatarHover = false;
+
+  links = ['Projects', 'About'];
 
   constructor(
     private theme: ThemeService
@@ -27,6 +30,10 @@ export class HomeComponent implements OnInit {
       this.rippleColor = primary;
     }
     console.log(`avatarClick, rippleColor = ${this.rippleColor}`);
+  }
+
+  linkClick(link: string): void {
+    console.log(`linkClick = ${link}`);
   }
 
 }

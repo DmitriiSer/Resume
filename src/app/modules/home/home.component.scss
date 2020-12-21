@@ -6,6 +6,9 @@
 
 mat-toolbar {
   padding: 0;
+  background-image: url("/assets/images/Hexagon-1.jpg");
+  background-blend-mode: luminosity;
+  background-size: cover;
 }
 
 .avatar-btn {

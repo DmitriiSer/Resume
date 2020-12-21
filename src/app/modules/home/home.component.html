@@ -1,16 +1,17 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
 
     <!-- Avatar button -->
-    <div #avatarBtn matRipple [matRippleColor]="rippleColor" class="avatar-btn" (click)="avatarClick()"></div>
+    <div [ngClass]="{ 'mat-elevation-z2' : avatarHover }">
+        <div matRipple [matRippleColor]="rippleColor" class="avatar-btn" (click)="avatarClick()"
+            (mouseenter)="avatarHover = true" (mouseleave)="avatarHover = false"></div>
+    </div>
 
     <!-- Title -->
     <span>{{title}}</span>
 
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
+
+    <!-- Links -->
+    <button *ngFor="let link of links" mat-button (click)="linkClick(link)">{{link}}</button>
+
 </mat-toolbar>
