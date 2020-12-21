@@ -142,7 +142,7 @@
                         if (obj && obj.no_image) {
                             img = "";
                         } else if (obj && obj.image === undefined) {
-                            img = "/images/" + obj.title.toLowerCase() + ".png";
+                            img = "./images/" + obj.title.toLowerCase() + ".png";
                         } else if (obj === undefined) {
                             img = null;
                         } else {
@@ -212,7 +212,7 @@
                                         {title: "AngularJS", href: "https://angularjs.org/"},
                                         {title: "Ionic", href: "http://ionicframework.com/"},
                                         {title: "jQuery", href: "https://jquery.com/"},
-                                        {title: "Bootstrap", href: "http://getbootstrap.com/", image: "/images/bootstrap.svg"},
+                                        {title: "Bootstrap", href: "http://getbootstrap.com/", image: "./images/bootstrap.svg"},
                                         {title: "Velocity.js", href: "http://julian.com/research/velocity/", no_image: true}
                                     ]
                                 }
@@ -227,9 +227,9 @@
                                     width: 100,
                                     badges: [
                                         {title: "NetBeans", href: "https://netbeans.org/"},
-                                        {title: "Visual Studio", href: "https://www.visualstudio.com", image: "/images/visualstudio.png"},
+                                        {title: "Visual Studio", href: "https://www.visualstudio.com", image: "./images/visualstudio.png"},
                                         {title: "Eclipse", href: "https://eclipse.org/"},
-                                        {title: "Adobe Brackets", href: "http://brackets.io/", image: "/images/brackets.png"}
+                                        {title: "Adobe Brackets", href: "http://brackets.io/", image: "./images/brackets.png"}
                                     ]
                                 }
                             ]
@@ -250,10 +250,10 @@
                                         {title: "Grunt", href: "http://gruntjs.com/"},
                                         {title: "Compass", href: "http://compass-style.org/"},
                                         {title: "MySQL", href: "https://www.mysql.com"},
-                                        {title: "SQL Server", href: "https://en.wikipedia.org/wiki/Microsoft_SQL_Server", image: "/images/mssql.png", tooltip: "Microsoft SQL Server"},
-                                        {title: "Apache Tomcat", href: "http://tomcat.apache.org/", image: "/images/tomcat.png"},
+                                        {title: "SQL Server", href: "https://en.wikipedia.org/wiki/Microsoft_SQL_Server", image: "./images/mssql.png", tooltip: "Microsoft SQL Server"},
+                                        {title: "Apache Tomcat", href: "http://tomcat.apache.org/", image: "./images/tomcat.png"},
                                         {title: "Windows", href: "http://www.microsoft.com/windows/"},
-                                        {title: "Mac OS X", href: "http://www.apple.com/osx/", image: "/images/macosx.png"},
+                                        {title: "Mac OS X", href: "http://www.apple.com/osx/", image: "./images/macosx.png"},
                                         {title: "Linux", href: "https://en.wikipedia.org/wiki/Linux"}
                                     ]
                                 }
@@ -330,11 +330,11 @@
                                 libs: [
                                     {title: "AngularJS"},
                                     {title: "Ionic"},
-                                    {title: "Bootstrap", image: "/images/bootstrap.svg"},
+                                    {title: "Bootstrap", image: "./images/bootstrap.svg"},
                                     {title: "UI Bootstrap", no_image: true},
-                                    {title: "Font Awesome", image: "/images/font_awesome.png"},
+                                    {title: "Font Awesome", image: "./images/font_awesome.png"},
                                     {title: "Velocity.js", no_image: true},
-                                    {title: "CryptoJS (SHA-3)", image: "/images/CryptoJS.png"},
+                                    {title: "CryptoJS (SHA-3)", image: "./images/CryptoJS.png"},
                                     {title: "OpenShift"}
                                 ],
                                 ides: [{title: "NetBeans"}],
@@ -357,7 +357,7 @@
                                     {title: "jQuery-UI"},
                                     {title: "Velocity.js", no_image: true}
                                 ],
-                                ides: [{title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}]
+                                ides: [{title: "Adobe Brackets 1.3.0", image: "./images/brackets.png"}]
                             }
                         },
                         {
@@ -372,7 +372,7 @@
                                     {title: "JavaScript"}
                                 ],
                                 libs: [],
-                                ides: [{title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}]
+                                ides: [{title: "Adobe Brackets 1.3.0", image: "./images/brackets.png"}]
                             }
                         },
                         {
@@ -392,7 +392,7 @@
                                     {title: "jQuery"},
                                     {title: "Velocity.js", no_image: true}
                                 ],
-                                ides: [{title: "NetBeans"}, {title: "Adobe Brackets 1.3.0", image: "/images/brackets.png"}]
+                                ides: [{title: "NetBeans"}, {title: "Adobe Brackets 1.3.0", image: "./images/brackets.png"}]
                             }
                         }
                         /*
@@ -401,8 +401,8 @@
                          description: "This on-going project creates an application that would find the cheapest flights around the world using different search engines (e.g. Expedia, RyanAir, etc.). It consist of 2 parts: the server and the client. The server receives request from client app and pushes/fetches entries to DB which is MySQL instance. The client is a desktop application to provide UI to users",
                          techs: {
                          langs: [{title: "C++/CLI (.NET)", no_image: true}],
-                         libs: [{title: "Boost (ASIO)", image: "/images/boost_asio.png"}],
-                         ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}],
+                         libs: [{title: "Boost (ASIO)", image: "./images/boost_asio.png"}],
+                         ides: [{title: "Visual Studio", image: "./images/visualstudio.png"}],
                          dbs: [{title: "MySQL"}],
                          }
                          },
@@ -412,7 +412,7 @@
                          techs: {
                          langs: [{title: "C++"}],
                          libs: [{title: "WinPcap", no_image: true}],
-                         ides: [{title: "Borland C++ Builder 5/6", image: "/images/bcb6.png"}]
+                         ides: [{title: "Borland C++ Builder 5/6", image: "./images/bcb6.png"}]
                          }
                          },
                          {
@@ -420,8 +420,8 @@
                          description: "Compound of 2 tetrahedra spinning around its axis. Made on Windows using Visual C++ and DirectX APIs",
                          techs: {
                          langs: [{title: "C++/CLI (.NET)", no_image: true}],
-                         libs: [{title: "DirectX (Direct3D)", image: "/images/directx.png"}],
-                         ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}]
+                         libs: [{title: "DirectX (Direct3D)", image: "./images/directx.png"}],
+                         ides: [{title: "Visual Studio", image: "./images/visualstudio.png"}]
                          }
                          },
                          {
@@ -430,7 +430,7 @@
                          techs: {
                          langs: [{title: "C++/CLI (.NET)", no_image: true}],
                          libs: [],
-                         ides: [{title: "Visual Studio", image: "/images/visualstudio.png"}]
+                         ides: [{title: "Visual Studio", image: "./images/visualstudio.png"}]
                          }
                          }*/
                     ];
