@@ -1,0 +1,19 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "prebuild": "npm install",
+    "build": "node-sass ./scss/styles.scss ./css/styles.css --source-map true",
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "compass-mixins": "^0.12.10",
+    "node-sass": "^5.0.0"
+  }
+}
