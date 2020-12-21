@@ -1,5 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { ApiService } from 'src/app/shared/api.service';
 import { ThemeService } from 'src/app/shared/theme.service';
 
 @Component({
@@ -14,15 +17,29 @@ export class NavbarComponent implements OnInit {
   rippleColor = this.theme.getPrimaryColor() + 'bb';
   avatarHover = false;
 
-  // TODO: get links using API call
-  links = ['Projects', 'About'];
+  links: Array<string> = [];
 
   constructor(
     private router: Router,
-    private theme: ThemeService
+    private theme: ThemeService,
+    private api: ApiService
   ) { }
 
   ngOnInit(): void {
+    // retrieve app pages and about details
+    forkJoin([
+      this.api.getPages(),
+      this.api.getAbout()
+    ]).subscribe(data => {
+      const pages = data[0];
+      const about = data[1];
+
+      // set navbar title      
+      this.title = about.fullname;
+
+      // generate page links      
+      this.links = pages.map(v => v.title);
+    });
   }
 
   avatarClick() {
