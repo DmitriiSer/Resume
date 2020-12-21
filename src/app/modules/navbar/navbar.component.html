@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
 
     <!-- Avatar button -->
-    <div [ngClass]="{ 'mat-elevation-z2' : avatarHover }">
+    <div [ngClass]="{ 'active' : avatarHover }">
         <div matRipple [matRippleColor]="rippleColor" class="avatar-btn" (click)="avatarClick()"
             (mouseenter)="avatarHover = true" (mouseleave)="avatarHover = false"></div>
     </div>
