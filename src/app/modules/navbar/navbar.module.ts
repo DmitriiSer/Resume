@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { HomeComponent } from './home.component';
+import { NavbarComponent } from './navbar.component';
 import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { MatRippleModule } from '@angular/material/core';
     MatToolbarModule,
     MatRippleModule
   ],
-  declarations: [HomeComponent],
-  exports: [HomeComponent]
+  declarations: [NavbarComponent],
+  exports: [NavbarComponent]
 })
-export class HomeModule { }
+export class NavbarModule { }

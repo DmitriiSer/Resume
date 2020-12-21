@@ -3,9 +3,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarModule } from './modules/navbar/navbar.module';
 
 import { AppComponent } from './app.component';
-import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { HomeModule } from './modules/home/home.module';
     BrowserModule,
     BrowserAnimationsModule,
     // Home
-    HomeModule,
+    NavbarModule,
     // Routing
     AppRoutingModule
   ],
